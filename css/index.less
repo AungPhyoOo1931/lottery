@@ -3,8 +3,12 @@
     padding: 0;
     box-sizing: border-boxs;
 }
-@uiSize:750px;
-@tovw:(@uiSize / 100) * 1vw;
+
+@media screen and (min-width:750px) {
+    html{
+        font-size: 37.5px !important;
+    }
+}
 
 ul{
     padding: 0;
@@ -16,35 +20,72 @@ li{
 }
 
 #app{
+    max-width: 750px;
+    min-width: 320px;
+    margin: 0 auto;
+    border:  .0267rem solid black;
+    position: relative;
     a{
         color: #333;
         text-decoration: none;
     }
-    width: (750vmin / @tovw);
-    max-width: 750px;
-    margin: 0 auto;
-    border:  1px solid black;
     header{
         width: 100%;
+        text-align: center;
         .log{
             width: 100%;
-            text-align: center;
-            font-size: (40vmin / @tovw);
+            
+            font-size: 1.0667rem;
         }
     }
     nav{
         width: 100%;
         .top-nav{
-            height: (50vmin / @tovw);
+            height: 2.1333rem;
             ul{
                 display: flex;
+                align-items: center;
+                height: 100%;
                 li{
-                    padding: (5vmin / @tovw) (10vmin / @tovw);
-                    margin-left: (10vmin / @tovw);
+                    height: (1.3333rem/ 1);
+                    line-height: (1.3333rem / 1);
+                    font-size: (.6667rem / 1);
+                    padding: (.1333rem / 1) (.2667rem / 1);
+                    margin-left: (.2667rem / 1);
+                    border-bottom: .0533rem solid #fff;
                     &:hover{
-                        border-bottom: 2px solid green;
+                        border-bottom: .0533rem solid green;
+                    }
+                    .active{
+                        border-bottom: .0533rem solid green;
                     }
                 }
+            }
+        }
+    }
+    
+    footer{
+        max-width: 750px;
+        min-width: 320px;
+        width: 100%;
+        .footer-nav{
+            background-color: greenyellow;
+            position: fixed;
+            bottom: 0;
+            height: 1.3333rem;
+            max-width: 750px;
+            min-width: 320px;
+            width: 100%;
+            ul{
+                height: 100%;
+                line-height: 100%;
+                display: flex;
+                max-width: 750px;
+                min-width: 320px;
+                width: 100%;
+                justify-content: space-around;
+                align-items: center;
+                font-size: .6667rem;
             }
         }
     }

@@ -3,6 +3,11 @@
   padding: 0;
   box-sizing: border-boxs;
 }
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 37.5px !important;
+  }
+}
 ul {
   padding: 0;
   margin: 0;
@@ -11,10 +16,11 @@ li {
   list-style: none;
 }
 #app {
-  width: 100vmin;
   max-width: 750px;
+  min-width: 320px;
   margin: 0 auto;
-  border: 1px solid black;
+  border: 0.0267rem solid black;
+  position: relative;
 }
 #app a {
   color: #333;
@@ -22,25 +28,59 @@ li {
 }
 #app header {
   width: 100%;
+  text-align: center;
 }
 #app header .log {
   width: 100%;
-  text-align: center;
-  font-size: 5.33333333vmin;
+  font-size: 1.0667rem;
 }
 #app nav {
   width: 100%;
 }
 #app nav .top-nav {
-  height: 6.66666667vmin;
+  height: 2.1333rem;
 }
 #app nav .top-nav ul {
   display: flex;
+  align-items: center;
+  height: 100%;
 }
 #app nav .top-nav ul li {
-  padding: 0.66666667vmin 1.33333333vmin;
-  margin-left: 1.33333333vmin;
+  height: 1.3333rem;
+  line-height: 1.3333rem;
+  font-size: 0.6667rem;
+  padding: 0.1333rem 0.2667rem;
+  margin-left: 0.2667rem;
+  border-bottom: 0.0533rem solid #fff;
 }
 #app nav .top-nav ul li:hover {
-  border-bottom: 2px solid green;
+  border-bottom: 0.0533rem solid green;
+}
+#app nav .top-nav ul li .active {
+  border-bottom: 0.0533rem solid green;
+}
+#app footer {
+  max-width: 750px;
+  min-width: 320px;
+  width: 100%;
+}
+#app footer .footer-nav {
+  background-color: greenyellow;
+  position: fixed;
+  bottom: 0;
+  height: 1.3333rem;
+  max-width: 750px;
+  min-width: 320px;
+  width: 100%;
+}
+#app footer .footer-nav ul {
+  height: 100%;
+  line-height: 100%;
+  display: flex;
+  max-width: 750px;
+  min-width: 320px;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.6667rem;
 }

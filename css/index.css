@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-boxs;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+#app {
+  width: 100vmin;
+  max-width: 750px;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+#app a {
+  color: #333;
+  text-decoration: none;
+}
+#app header {
+  width: 100%;
+}
+#app header .log {
+  width: 100%;
+  text-align: center;
+  font-size: 5.33333333vmin;
+}
+#app nav {
+  width: 100%;
+}
+#app nav .top-nav {
+  height: 6.66666667vmin;
+}
+#app nav .top-nav ul {
+  display: flex;
+}
+#app nav .top-nav ul li {
+  padding: 0.66666667vmin 1.33333333vmin;
+  margin-left: 1.33333333vmin;
+}
+#app nav .top-nav ul li:hover {
+  border-bottom: 2px solid green;
+}

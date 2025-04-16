@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-boxs;
+}
+@uiSize:750px;
+@tovw:(@uiSize / 100) * 1vw;
+
+ul{
+    padding: 0;
+    margin: 0;
+}
+li{
+    list-style: none;
+    
+}
+
+#app{
+    a{
+        color: #333;
+        text-decoration: none;
+    }
+    width: (750vmin / @tovw);
+    max-width: 750px;
+    margin: 0 auto;
+    border:  1px solid black;
+    header{
+        width: 100%;
+        .log{
+            width: 100%;
+            text-align: center;
+            font-size: (40vmin / @tovw);
+        }
+    }
+    nav{
+        width: 100%;
+        .top-nav{
+            height: (50vmin / @tovw);
+            ul{
+                display: flex;
+                li{
+                    padding: (5vmin / @tovw) (10vmin / @tovw);
+                    margin-left: (10vmin / @tovw);
+                    &:hover{
+                        border-bottom: 2px solid green;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -64,23 +64,95 @@ li {
   margin: 0 auto;
   border: 1px solid black;
 }
-#app .main .top {
+#app .main .live {
+  border: 1px solid black;
+  display: flex;
+}
+#app .main .live .live-left {
   width: 9.3333rem;
   height: 10rem;
   padding: 0.2667rem 0.2667rem;
   background-color: pink;
   text-align: center;
 }
-#app .main .top .live-number {
+#app .main .live .live-left .live-number {
   font-size: 4.6667rem;
   font-weight: 600;
 }
-#app .main .top .live-time {
+#app .main .live .live-left .live-time {
   font-size: 1rem;
+}
+#app .main .live .live-history {
+  text-align: center;
+  font-size: 0.64rem;
+  width: 50%;
+}
+#app .main .live .live-history .text {
+  font-size: 1.0667rem;
+}
+#app .main .live .live-history .text span {
+  color: red;
+  font-weight: 900;
+}
+#app .main .live .live-history li {
+  padding: 0.2667rem;
+}
+#app .main .live .live-history li .time {
+  font-size: 0.8rem;
+  background-color: yellow;
+}
+#app .main .live .live-history li .result {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  background-color: blue;
+}
+#app .main .live .live-history li .result .num {
+  font-size: 1.0667rem;
+  color: red;
+  font-weight: 600;
+}
+#app .main .live .live-history li .result .se,
+#app .main .live .live-history li .result .val {
+  height: 1.6667rem;
+  line-height: 1.6667rem;
+}
+#app .main .main-btn {
+  margin-top: 0.2667rem;
+  display: flex;
+  justify-content: space-around;
+}
+#app .main .main-btn button {
+  font-size: 0.8rem;
+}
+#app .main .bet ul {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+#app .main .bet ul li {
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 0.1333rem 0.2667rem;
+  font-size: 0.6667rem;
+  margin: 0.2133rem;
+}
+#app .main .bet ul li:hover {
+  background-color: green;
+}
+#app .main .bet ul .active {
+  background-color: green;
+}
+#app .main .cash {
+  margin: 0 auto;
+  width: 13.3333rem;
+  height: 2.6667rem;
+  border: 1px solid black;
 }
 #app footer {
   max-width: 750px;
   min-width: 320px;
+  margin-top: 2.6667rem;
   width: 100%;
 }
 #app footer .footer-nav {

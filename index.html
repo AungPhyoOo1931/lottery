@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">    
     <title>Document</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
@@ -30,9 +30,66 @@
             </div>
         </nav>
         <div class="main">
-            <div class="top">
-                <div class="live-number">22</div>
-                <div class="live-time"><span>√</span>update at:<a>17-4 12:40:40</a></div>
+            <div class="live">
+                <div class="live-left">
+                    <div class="live-number">22</div>
+                    <div class="live-time"><span>√</span>update at:<a>17-4 12:40:40</a></div>
+                </div>
+                <div class="live-history">
+                    <div class="text">当前期数：<span>255</span></div>
+                    <ul>
+                        <li>
+                            <div class="time">1:00PM</div>
+                            <div class="result">
+                                <div class="set">
+                                    <div>set</div>
+                                    <div class="se">12345.01</div>
+                                </div>
+                                <div class="value">
+                                    <div>value</div>
+                                    <div class="val">12346.01</div>
+                                </div>
+                                <div class="number">
+                                    <div>num</div>
+                                    <div class="num">61</div>
+                                </div>
+                            </div>
+                            
+                        </li>
+                        <li>
+                            <div class="time">6:00PM</div>
+                            <div class="result">
+                                <div class="set">
+                                    <div>set</div>
+                                    <div class="se">12345.01</div>
+                                </div>
+                                <div class="value">
+                                    <div>value</div>
+                                    <div class="val">12346.01</div>
+                                </div>
+                                <div class="number">
+                                    <div>num</div>
+                                    <div class="num">61</div>
+                                </div>
+                            </div>
+                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main-btn">
+                <button>投注</button>
+                <button>投注历史</button>
+                <button>盈利</button>
+                <button>亏损</button>
+            </div>
+            <div class="bet">
+                <ul>
+                    <li v-for="(item,index) in betList" :class="{active:item.checked}" @click="item.checked = !item.checked" :key="item.id">{{ item.value.toString().padStart(2, '0') }}</li>
+                </ul>
+                <div class="cash">
+                    
+                </div>
             </div>
         </div>
         <footer>
@@ -47,5 +104,7 @@
         </footer>
     </div>
     <script src="./js/flexible.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 </html>

@@ -68,30 +68,110 @@ li{
         width: 18.6667rem;
         margin: 0 auto;
         border: 1px solid black;
-        .top{
-            width: 9.3333rem;
-            height: 10rem;
-            padding: .2667rem .2667rem;
-            background-color: pink;
-            text-align: center;
-            .live-number{
-                font-size: 4.6667rem;
-                font-weight: 600;
+        .live{
+            border: 1px solid black;
+            display: flex;
+            .live-left{
+                width: 9.3333rem;
+                height: 10rem;
+               
+                padding: .2667rem .2667rem;
+                background-color: pink;
+                text-align: center;
+                .live-number{
+                    font-size: 4.6667rem;
+                    font-weight: 600;
+                }
+                .live-time{
+                    font-size: 1rem;
+                }
             }
-            .live-time{
-                font-size: 1rem;
+            .live-history{
+
+                text-align: center;
+                font-size: .64rem;
+                width: 50%;
+                .text{
+                    font-size: 1.0667rem;
+                    span{
+                        color: red;
+                        font-weight: 900;
+                    }
+                }
+                li{
+                    padding: .2667rem;
+                    
+                    .time{
+                        font-size: .8rem;
+                        background-color: yellow;
+                    }
+                    .result{
+                        text-align: center;
+                        display: flex;
+                        justify-content: space-around;
+                        background-color: blue;
+                        
+                        .num{
+                            font-size: 1.0667rem;
+                            color: red;
+                            font-weight: 600;
+                        }
+                        .se,
+                        .val{
+                            height: 1.6667rem;
+                            line-height: 1.6667rem;
+                        }
+                    }
+                }
             }
+        }
+        .main-btn{
+            margin-top: .2667rem;
+            display: flex;
+            justify-content: space-around;
+            button{
+                font-size: .8rem;
+            }
+        }
+        .bet{
+            ul{
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                li{
+                    cursor: pointer;
+                    border: 1px solid black;
+                    padding: .1333rem .2667rem;
+                    font-size: .6667rem;
+                    margin: .2133rem;
+                    &:hover{
+                        background-color: green;
+                    }
+                }
+                .active{
+                    background-color: green;
+                }
+            }
+        }
+        .cash{
+            margin: 0 auto;
+            width: 13.3333rem;
+            height: 2.6667rem;
+            border: 1px solid black;
         }
     }
     
 
 
     footer{
+
         max-width: 750px;
         min-width: 320px;
+        margin-top: 2.6667rem;
         width: 100%;
         .footer-nav{
             background-color: greenyellow;
+           
             position: fixed;
             bottom: 0;
             height: 1.3333rem;

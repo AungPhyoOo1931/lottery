@@ -18,7 +18,9 @@ li{
     list-style: none;
     
 }
-
+body{
+    font-size: 1rem;
+}
 #app{
     max-width: 750px;
     min-width: 320px;
@@ -68,12 +70,16 @@ li{
         width: 18.6667rem;
         margin: 0 auto;
         border: 1px solid black;
+        .time{
+            font-size: .6667rem;
+            text-align: center;
+        }
         .live{
             border: 1px solid black;
             display: flex;
             .live-left{
                 width: 9.3333rem;
-                height: 10rem;
+                
                
                 padding: .2667rem .2667rem;
                 background-color: pink;
@@ -155,9 +161,34 @@ li{
         }
         .cash{
             margin: 0 auto;
+            padding: .5333rem;
             width: 13.3333rem;
-            height: 2.6667rem;
+            height: 8.6667rem;
+            border-radius: 1.3333rem;
             border: 1px solid black;
+            .config,
+            .total,
+            .win,
+            .amount,
+            .count{
+                font-size: .6667rem;
+            }
+            .config{
+                display: block;
+                margin: .2667rem auto;
+                width: 4.6667rem;
+            }
+            .amount{
+                input{
+                    font-size: .6667rem;
+                }
+                .amount-btn{
+                    margin-top: .2667rem;
+                    button{
+                        font-size: .48rem
+                    }
+                }
+            }
         }
     }
     

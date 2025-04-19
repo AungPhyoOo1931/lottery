@@ -15,6 +15,9 @@ ul {
 li {
   list-style: none;
 }
+body {
+  font-size: 1rem;
+}
 #app {
   max-width: 750px;
   min-width: 320px;
@@ -64,13 +67,16 @@ li {
   margin: 0 auto;
   border: 1px solid black;
 }
+#app .main .time {
+  font-size: 0.6667rem;
+  text-align: center;
+}
 #app .main .live {
   border: 1px solid black;
   display: flex;
 }
 #app .main .live .live-left {
   width: 9.3333rem;
-  height: 10rem;
   padding: 0.2667rem 0.2667rem;
   background-color: pink;
   text-align: center;
@@ -145,9 +151,32 @@ li {
 }
 #app .main .cash {
   margin: 0 auto;
+  padding: 0.5333rem;
   width: 13.3333rem;
-  height: 2.6667rem;
+  height: 8.6667rem;
+  border-radius: 1.3333rem;
   border: 1px solid black;
+}
+#app .main .cash .config,
+#app .main .cash .total,
+#app .main .cash .win,
+#app .main .cash .amount,
+#app .main .cash .count {
+  font-size: 0.6667rem;
+}
+#app .main .cash .config {
+  display: block;
+  margin: 0.2667rem auto;
+  width: 4.6667rem;
+}
+#app .main .cash .amount input {
+  font-size: 0.6667rem;
+}
+#app .main .cash .amount .amount-btn {
+  margin-top: 0.2667rem;
+}
+#app .main .cash .amount .amount-btn button {
+  font-size: 0.48rem;
 }
 #app footer {
   max-width: 750px;

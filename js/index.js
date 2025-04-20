@@ -1,9 +1,18 @@
 const app = new Vue({
     el: '#app',
     data: {
+      live:{
+        liveResult:88,
+        cryle:123456,
+        timeset:moment().tz('Asia/Yangon').format('YYYY-MM-DD HH:mm:ss'),
+        liveHistory:[
+            {set:12345.01,value:12345.01,num:45},
+            {set:12345.11,value:12345.11,num:11}
+           ]
+        },
       configBetList: [],
       betList:[],
-      cryle:123456,
+      
       amount:0,
       hour:0,
       min:0,
@@ -19,7 +28,11 @@ const app = new Vue({
         return this.amount * this.configBetList.length
       },
       maybeWin(){
-        return this.amount * 80
+        if(this.betType === 1){
+            return this.amount * 80
+        }else{
+            return this.amount * 8
+        }
       },
     },
     methods: {
@@ -95,6 +108,9 @@ const app = new Vue({
         }
       },
       choiceH(){
+        this.showBetList(10)
+      },
+      choiceT(){
         this.showBetList(10)
       },
       clearConfig(){

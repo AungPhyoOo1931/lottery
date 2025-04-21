@@ -142,9 +142,8 @@ body {
   padding: 0.1333rem 0.2667rem;
   font-size: 0.6667rem;
   margin: 0.2133rem;
-}
-#app .main .bet ul li:hover {
-  background-color: green;
+  background-color: #fff;
+  transition: background-color 0.1s ease, color 0.1s ease;
 }
 #app .main .bet ul .active {
   background-color: green;

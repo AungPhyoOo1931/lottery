@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">    
     <title>Document</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.43/builds/moment-timezone-with-data.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.43/builds/moment-timezone-with-data.min.js"></script> -->
+    <script src="./js/moment.js"></script>
+    <script src="./js/moment-timezone-with-data.min.js"></script>
+    <script src="./js/axios.js"></script>
 </head>
 <body>
     <div id="app">
@@ -35,15 +38,15 @@
         <div class="main">
             <div class="live">
                 <div class="live-left">
-                    <div class="live-number">{{live.liveResult}}</div>
-                    <div class="live-time"><span>√</span>update at:</br><a>{{live.timeset}}</a></div>
+                    <div class="live-number">{{liveInfo.live.twod}}</div>
+                    <div class="live-time"><span>√</span>update at:</br><a>{{liveInfo.server_time}}</a></div>
                 </div>
                 <div class="live-history">
-                    <div class="text">当前期数：<span>{{live.cryle}}</span></div>
+                    <div class="text">当前期数：<span>{{liveInfo.cryle}}</span></div>
                     <ul>
-                        <li v-for="(item,index) in live.liveHistory" :key="index">
+                        <li v-for="(item,index) in liveInfo.liveHistory" :key="index">
                             <div v-if="index === 0" class="time">1:00PM</div>
-                            <div v-else class="time">6:00PM</div>
+                            <div v-else class="time">4:30PM</div>
                             <div class="result">
                                 <div class="set">
                                     <div>set</div>
@@ -64,7 +67,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="time">{{live.cryle}}期停止下注倒计时:</br>{{hour}}小时:{{min}}分钟{{sec}}秒</div>
+            <div class="time">{{liveInfo.cryle}}期停止下注倒计时:</br><span v-if="timeset.day >= 1">{{timeset.day}}天</span>{{timeset.hour}}小时:{{timeset.min}}分钟{{timeset.sec}}秒</div>
             <div class="main-btn">
                 <button @click="showBetList(100);betType = 1;clearConfig()">单选</button>
                 <button @click="choiceR();">R选</button>
@@ -73,15 +76,14 @@
             </div>
             <div class="bet ">
                 <ul>
-                    <li v-if="betType === 1" v-for="(item,index) in betList" :class="{active:item.checked}" @click="item.checked = !item.checked;configBet()" :key="item.id">{{ item.value.toString().padStart(2, '0') }}</li>
-                    <li v-if="betType === 2 || betType === 3" v-for="(item,index) in betList" :class="{active:item.checked}" @click="item.checked = !item.checked;configBet()" :key="item.id">{{ item.value.toString()}}</li>
-
+                    <li v-if="betType === 1" v-for="(item,index) in betList" :class="{active:item.checked}"  @pointerup="item.checked = !item.checked;configBet()" :key="item.id">{{ item.value.toString().padStart(2, '0') }}</li>
+                    <li v-if="betType === 2 || betType === 3" v-for="(item,index) in betList" :class="{active:item.checked}" @pointerup="item.checked = !item.checked;configBet()" :key="item.id">{{ item.value.toString()}}</li>
                 </ul>
                 <div class="cash">
                     <div class="count">
                         选中号码:<span>{{configBetList.length}}</span>个
                     </div>
-                    <div class="amount">下注金额:<input type="number" v-model="amount">
+                    <div class="amount">下注金额:<input type="number" v-model.number="amount">
                         <div class="amount-btn">
                             <button type="button" class="btn btn-info btn-sm" @click="amount=5000">5000Ks</button>
                             <button type="button" class="btn btn-info btn-sm" @click="amount=10000">10000Ks</button>
@@ -111,7 +113,7 @@
         </footer>
     </div>
     <script src="./js/flexible.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./js/vue.js"></script>
     <script src="./js/index.js"></script>
 </body>
 </html>

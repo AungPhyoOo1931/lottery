@@ -2,7 +2,7 @@ const app = new Vue({
     el: '#app',
     data: {
       liveInfo:{
-        server_time:'2025-04-20 15:05:57',
+        server_time:'--',
         cryle:123456,
         live:{
           set:"--",

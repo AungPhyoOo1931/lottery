@@ -21,8 +21,8 @@ body {
 #app {
   max-width: 750px;
   min-width: 320px;
+  background-color: #FFF9F0;
   margin: 0 auto;
-  border: 0.0267rem solid black;
   position: relative;
 }
 #app a {
@@ -31,11 +31,18 @@ body {
 }
 #app header {
   width: 100%;
+  height: 2.1333rem;
+  line-height: 2.1333rem;
   text-align: center;
+  background-color: #D0021B;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
 }
 #app header .log {
   width: 100%;
-  font-size: 50px;
+  color: #F5A623;
+  font-size: 1.6rem;
+  font-weight: 900;
 }
 #app nav {
   width: 100%;
@@ -47,57 +54,72 @@ body {
   display: flex;
   align-items: center;
   height: 100%;
+  padding: 0 0.5333rem;
 }
 #app nav .top-nav ul li {
-  height: 1.3333rem;
+  height: 1.6333rem;
   line-height: 1.3333rem;
-  font-size: 1.25rem;
+  font-size: 1.0667rem;
   padding: 0.1333rem 0.2667rem;
   margin-left: 0.2667rem;
-  border-bottom: 0.0533rem solid #fff;
+  border-bottom: 0.16rem solid #fff;
 }
-#app nav .top-nav ul li:hover {
-  border-bottom: 0.0533rem solid green;
+#app nav .top-nav ul .anv-active {
+  border-bottom: 0.16rem solid #F5A623;
 }
-#app nav .top-nav ul li .active {
-  border-bottom: 0.0533rem solid green;
+#app nav .top-nav ul .anv-active a {
+  color: #D0021B;
 }
 #app .main {
   width: 18.6667rem;
   margin: 0 auto;
-  border: 1px solid black;
 }
-#app .main .time {
-  font-size: 0.6667rem;
+#app .main .time-out {
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+  margin: 0.5333rem auto;
+  font-size: 0.8rem;
   text-align: center;
+  background-color: #F5A623;
+  width: 70%;
+  padding: 0.2667rem 0.2667rem;
+  border-radius: 1.0667rem;
 }
 #app .main .live {
-  border: 1px solid black;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+  height: 11.4333rem;
   display: flex;
 }
 #app .main .live .live-left {
   width: 9.3333rem;
   padding: 0.2667rem 0.2667rem;
-  background-color: pink;
+  background-color: #F5A623;
   text-align: center;
 }
 #app .main .live .live-left .live-number {
-  font-size: 4.6667rem;
-  font-weight: 600;
+  font-size: 6.6667rem;
+  font-weight: 900;
+  color: #D0021B;
 }
 #app .main .live .live-left .live-time {
-  font-size: 1rem;
+  font-size: 0.6667rem;
+  color: #FFF9F0;
+}
+#app .main .live .live-left .live-time a {
+  color: #FFF9F0;
 }
 #app .main .live .live-history {
   text-align: center;
   font-size: 0.64rem;
   width: 50%;
+  background-color: #D0021B;
 }
 #app .main .live .live-history .text {
-  font-size: 1.0667rem;
+  font-size: 0.9667rem;
 }
 #app .main .live .live-history .text span {
-  color: red;
+  color: #F5A623;
   font-weight: 900;
 }
 #app .main .live .live-history li {
@@ -105,17 +127,19 @@ body {
 }
 #app .main .live .live-history li .time {
   font-size: 0.8rem;
-  background-color: yellow;
+  background-color: #ccc;
 }
 #app .main .live .live-history li .result {
   text-align: center;
   display: flex;
   justify-content: space-around;
-  background-color: blue;
+  background-color: #F5A623;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
 }
 #app .main .live .live-history li .result .num {
   font-size: 1.0667rem;
-  color: red;
+  color: #D0021B;
   font-weight: 600;
 }
 #app .main .live .live-history li .result .se,
@@ -123,13 +147,30 @@ body {
   height: 1.6667rem;
   line-height: 1.6667rem;
 }
+#app .main .live .live-history li:nth-child(2) {
+  margin-top: 0.2667rem;
+}
 #app .main .main-btn {
   margin-top: 0.2667rem;
+  margin-bottom: 0.2667rem;
   display: flex;
   justify-content: space-around;
 }
 #app .main .main-btn button {
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
   font-size: 0.8rem;
+  padding: 0.1333rem 0.5333rem;
+  color: #D0021B;
+  border: 0.1067rem solid #C0392B;
+  border-radius: 1.0667rem;
+  background-color: #FFF9F0;
+}
+#app .main .main-btn button.active {
+  color: #F5A623;
+  border: 0.1067rem solid #C0392B;
+  background-color: #D0021B;
+  border-radius: 1.0667rem;
 }
 #app .main .bet ul {
   display: flex;
@@ -138,21 +179,24 @@ body {
 }
 #app .main .bet ul li {
   cursor: pointer;
-  border: 1px solid black;
+  border: 1px solid #F5A623;
+  color: #F5A623;
   padding: 0.1333rem 0.2667rem;
-  font-size: 0.6667rem;
-  margin: 0.2133rem;
-  background-color: #fff;
+  font-size: 0.8rem;
+  margin: 0.1533rem;
+  background-color: #FFF9F0;
   transition: background-color 0.1s ease, color 0.1s ease;
 }
 #app .main .bet ul .active {
-  background-color: green;
+  background-color: #D0021B;
 }
 #app .main .cash {
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
   margin: 0 auto;
   padding: 0.5333rem;
-  width: 13.3333rem;
-  height: 8.6667rem;
+  width: 17.3333rem;
+  height: 10.6667rem;
   border-radius: 1.3333rem;
   border: 1px solid black;
 }
@@ -161,21 +205,41 @@ body {
 #app .main .cash .win,
 #app .main .cash .amount,
 #app .main .cash .count {
-  font-size: 0.6667rem;
+  font-size: 0.9333rem;
 }
 #app .main .cash .config {
   display: block;
   margin: 0.2667rem auto;
-  width: 4.6667rem;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+  font-size: 1rem;
+  padding: 0.1333rem 1.0667rem;
+  background-color: #D0021B;
+  color: #F5A623;
+  border: 0.1067rem solid #F5A623;
+}
+#app .main .cash .config:active {
+  background-color: #C0392B;
 }
 #app .main .cash .amount input {
-  font-size: 0.6667rem;
+  font-size: 0.8rem;
+  border-radius: 0.5333rem;
+  padding-left: 0.5333rem;
+  border: 0.0533rem solid #D0021B;
 }
 #app .main .cash .amount .amount-btn {
   margin-top: 0.2667rem;
 }
 #app .main .cash .amount .amount-btn button {
-  font-size: 0.48rem;
+  font-size: 0.8rem;
+  border: 0.1067rem solid #D0021B;
+  padding: 0 0.5333rem;
+  border-radius: 0.5333rem;
+  background-color: #FFF9F0;
+}
+#app .main .cash .amount .amount-btn button:active {
+  background-color: #D0021B;
+  color: #F5A623;
 }
 #app footer {
   max-width: 750px;
@@ -184,10 +248,11 @@ body {
   width: 100%;
 }
 #app footer .footer-nav {
-  background-color: greenyellow;
+  background-color: #FFF9F0;
+  border-top: 0.0533rem solid #D0021B;
   position: fixed;
   bottom: 0;
-  height: 1.3333rem;
+  height: 2.3333rem;
   max-width: 750px;
   min-width: 320px;
   width: 100%;
@@ -202,4 +267,8 @@ body {
   justify-content: space-around;
   align-items: center;
   font-size: 1.25rem;
+}
+#app footer .footer-nav ul .active a {
+  color: #D0021B;
+  font-weight: 900;
 }

@@ -3,6 +3,28 @@
     padding: 0;
     box-sizing: border-boxs;
 }
+// 红包配色方案
+
+// 主色：红包红，强烈的吸引力
+@color-primary: #D0021B; // 正红色（主按钮、强调）
+
+// 次主色：金黄色，代表财富
+@color-gold: #F5A623; // 金黄色（财富感）
+
+// 背景色：米色，柔和的背景色，减少刺眼
+@color-bg: #FFF9F0; // 米色背景（不刺眼）
+
+// 文字颜色：深灰色，适合阅读的字体颜色
+@color-text: #3C3C3C; // 深灰（阅读舒适）
+
+// 成功提示色：绿色，象征成功、中奖
+@color-success: #28A745; // 中奖绿色
+
+// 错误提示色：红色，提醒用户错误
+@color-error: #E74C3C; // 错误红色
+
+// 辅助色：深红色，次要按钮或悬浮效果
+@color-dark-red: #C0392B; // 深红（次按钮/悬浮）
 
 @media screen and (min-width:750px) {
     html{
@@ -20,12 +42,14 @@ li{
 }
 body{
     font-size: 1rem;
+    
 }
 #app{
     max-width: 750px;
     min-width: 320px;
+    background-color: @color-bg;
     margin: 0 auto;
-    border:  .0267rem solid black;
+    // border:  .0267rem solid black;
     position: relative;
     a{
         color: #333;
@@ -33,11 +57,16 @@ body{
     }
     header{
         width: 100%;
+        height: 2.1333rem;
+        line-height: 2.1333rem;
         text-align: center;
+        background-color: @color-primary;
+        box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
         .log{
             width: 100%;
-            
-            font-size: 50px;
+            color: @color-gold;
+            font-size: 1.6rem;
+            font-weight: 900;
         }
     }
     nav{
@@ -48,18 +77,19 @@ body{
                 display: flex;
                 align-items: center;
                 height: 100%;
+                padding: 0 .5333rem;
                 li{
-                    height: (1.3333rem);
-                    line-height: (1.3333rem );
-                    font-size: 1.25rem;
+                    height: 1.6333rem;
+                    line-height: 1.3333rem;
+                    font-size: 1.0667rem;
                     padding: (.1333rem ) (.2667rem );
                     margin-left: (.2667rem );
-                    border-bottom: .0533rem solid #fff;
-                    &:hover{
-                        border-bottom: .0533rem solid green;
-                    }
-                    .active{
-                        border-bottom: .0533rem solid green;
+                    border-bottom: .16rem solid #fff;
+                }
+                .anv-active{
+                    border-bottom: .16rem solid @color-gold;
+                    a{
+                        color: @color-primary;
                     }
                 }
             }
@@ -69,27 +99,40 @@ body{
     .main{
         width: 18.6667rem;
         margin: 0 auto;
-        border: 1px solid black;
-        .time{
-            font-size: .6667rem;
+        // border: 1px solid black;
+        .time-out{
+            box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+            margin: .5333rem auto;
+            font-size: .8rem;
             text-align: center;
+            background-color: #F5A623;
+            width: 70%;
+            padding: .2667rem .2667rem;
+            border-radius: 1.0667rem;
         }
         .live{
-            border: 1px solid black;
+            // border: 1px solid black;
+            box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+            height: 11.4333rem;
             display: flex;
             .live-left{
                 width: 9.3333rem;
                 
                
                 padding: .2667rem .2667rem;
-                background-color: pink;
+                background-color: @color-gold;
                 text-align: center;
                 .live-number{
-                    font-size: 4.6667rem;
-                    font-weight: 600;
+                    font-size: 6.6667rem;
+                    font-weight: 900;
+                    color: @color-primary;
                 }
                 .live-time{
-                    font-size: 1rem;
+                    font-size: .6667rem;
+                    color: @color-bg;
+                    a{
+                        color: @color-bg;
+                    }
                 }
             }
             .live-history{
@@ -97,30 +140,33 @@ body{
                 text-align: center;
                 font-size: .64rem;
                 width: 50%;
+                background-color: @color-primary;
                 .text{
-                    font-size: 1.0667rem;
+                    font-size: 0.9667rem;
                     span{
-                        color: red;
+                        color: @color-gold;
                         font-weight: 900;
                     }
                 }
                 li{
                     padding: .2667rem;
-                    
+                    // border: 1px solid #ccc;
                     .time{
                         font-size: .8rem;
-                        background-color: yellow;
+                        background-color: #ccc;
                     }
                     .result{
                         text-align: center;
                         display: flex;
                         justify-content: space-around;
-                        background-color: blue;
-                        
+                        background-color: @color-gold;
+                        box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+
                         .num{
                             font-size: 1.0667rem;
-                            color: red;
+                            color: @color-primary;
                             font-weight: 600;
+                            
                         }
                         .se,
                         .val{
@@ -128,15 +174,32 @@ body{
                             line-height: 1.6667rem;
                         }
                     }
+                    &:nth-child(2){
+                        margin-top: .2667rem;
+                    }
                 }
             }
         }
         .main-btn{
             margin-top: .2667rem;
+            margin-bottom: .2667rem;
             display: flex;
             justify-content: space-around;
             button{
+                box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
                 font-size: .8rem;
+                padding: .1333rem .5333rem;
+                // background-color: @color-gold;
+                color: @color-primary;
+                border: .1067rem solid @color-dark-red;
+                border-radius: 1.0667rem;
+                background-color: @color-bg;
+                &.active{
+                    color: @color-gold;
+                    border: .1067rem solid @color-dark-red;
+                    background-color: @color-primary;
+                    border-radius: 1.0667rem;
+                }
             }
         }
         .bet{
@@ -146,24 +209,26 @@ body{
                 flex-wrap: wrap;
                 li{
                     cursor: pointer;
-                    border: 1px solid black;
+                    border: 1px solid @color-gold;
+                    color: @color-gold;
                     padding: .1333rem .2667rem;
-                    font-size: .6667rem;
-                    margin: .2133rem;
-                    background-color: #fff;
+                    font-size: .8rem;
+                    margin: .1533rem;
+                    background-color: @color-bg;
                     transition: background-color 0.1s ease, color 0.1s ease;
-                    
                 }
                 .active{
-                    background-color: green;
+                    background-color: @color-primary;
                 }
             }
         }
         .cash{
+            box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+
             margin: 0 auto;
             padding: .5333rem;
-            width: 13.3333rem;
-            height: 8.6667rem;
+            width: 17.3333rem;
+            height: 10.6667rem;
             border-radius: 1.3333rem;
             border: 1px solid black;
             .config,
@@ -171,21 +236,41 @@ body{
             .win,
             .amount,
             .count{
-                font-size: .6667rem;
+                font-size: .9333rem;
             }
             .config{
                 display: block;
                 margin: .2667rem auto;
-                width: 4.6667rem;
+                box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+
+                font-size: 1rem;
+                padding: .1333rem 1.0667rem;
+                background-color: @color-primary;
+                color: @color-gold;
+                border: .1067rem solid @color-gold;
+                &:active{
+                    background-color: @color-dark-red;
+                }
             }
             .amount{
                 input{
-                    font-size: .6667rem;
+                    font-size: .8rem;
+                    border-radius: .5333rem;
+                    padding-left: .5333rem;
+                    border: .0533rem solid @color-primary;
                 }
                 .amount-btn{
                     margin-top: .2667rem;
                     button{
-                        font-size: .48rem
+                        font-size: .8rem;
+                        border: .1067rem solid @color-primary;
+                        padding: 0 .5333rem;
+                        border-radius: .5333rem;
+                        background-color: @color-bg;
+                        &:active {
+                            background-color: @color-primary;
+                            color: @color-gold;
+                          }
                     }
                 }
             }
@@ -195,17 +280,17 @@ body{
 
 
     footer{
-
+        
         max-width: 750px;
         min-width: 320px;
         margin-top: 2.6667rem;
         width: 100%;
         .footer-nav{
-            background-color: greenyellow;
-           
+            background-color: @color-bg;
+            border-top: .0533rem solid @color-primary;
             position: fixed;
             bottom: 0;
-            height: 1.3333rem;
+            height: 2.3333rem;
             max-width: 750px;
             min-width: 320px;
             width: 100%;
@@ -219,6 +304,12 @@ body{
                 justify-content: space-around;
                 align-items: center;
                 font-size: 1.25rem;
+                .active{
+                    a{
+                        color: @color-primary;
+                        font-weight: 900;
+                    }
+                }
             }
         }
     }

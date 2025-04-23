@@ -28,6 +28,7 @@ body {
 #app {
   max-width: 750px;
   min-width: 320px;
+  height: 120vh;
   background-color: #FFF9F0;
   margin: 0 auto;
   position: relative;
@@ -90,6 +91,35 @@ body {
 #app .main {
   width: 18.6667rem;
   margin: 0 auto;
+}
+#app .main .time-out {
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+  margin: 0.5333rem auto;
+  font-size: 0.8rem;
+  text-align: center;
+  background-color: #F5A623;
+  width: 70%;
+  padding: 0.2667rem 0.2667rem;
+  border-radius: 1.0667rem;
+}
+#app .main .result {
+  margin: 0.2667rem auto;
+  border-radius: 0.2667rem;
+  width: 90%;
+  padding: 0.5333rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+}
+#app .main .result ul li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.0667rem;
+}
+#app .main .result ul li .threeD {
+  color: #D0021B;
+  font-weight: 900;
 }
 #app .main .cash {
   box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);

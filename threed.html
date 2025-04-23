@@ -25,16 +25,13 @@
             <div class="top-nav">
                 <ul>
                     <li>
-                        <a href="./index.html">2D</a>
+                        <a href="./index.html">{{text.twod}}</a>
                     </li>
                     <li class="anv-active">
-                        <a href="./threed.html">3D</a>
+                        <a href="./threed.html">{{text.threed}}</a>
                     </li>
                     <li>
-                        <a href="#">生肖</a>
-                    </li>
-                    <li>
-                        <a href="#">老岛</a>
+                        <a href="./sptwod.html">{{text.sptwod}}</a>
                     </li>
                 </ul>
                 <select v-model="lang" @change="setLang()">
@@ -45,10 +42,23 @@
             </div>
         </nav>
         <div class="main">
+            <div class="result">
+                <ul>
+                    <li>
+                        <div class="Top-date">Date</div>
+                        <div class="Top-threeD">3D</div>
+                    </li>
+                    <li v-for="(item,index) in resultData" :key="index">
+                        <div class="date">{{item.datetime}}</div>
+                        <div class="threeD">{{item.result}}</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="time-out">{{text.stopTime}}:</br><span v-if="timeset.day >= 1">{{timeset.day}}{{text.day}}</span>{{timeset.hour}}{{text.hour}}:{{timeset.min}}{{text.min}}{{timeset.sec}}{{text.sec}}</div>
             <div class="bet ">
                 <div class="cash">
                     <div class="count">
-                        {{text.selectNumber}}:<span>{{configBetList.length}}</span>
+                        {{text.selectNumber}}:<input type="number"  min="0" max="999" v-model.number="choiceNumber" >
                     </div>
                     <div class="amount">{{text.betAmount}}<input type="number" v-model.number="amount">
                         <div class="amount-btn">
@@ -59,7 +69,7 @@
                         </div>
                     </div>
                     <div class="total">
-                        {{text.totalBetAmount}}<span>{{totalAmount}}</span>Ks
+                        {{text.totalBetAmount}}<span>{{totalBet}}</span>Ks
                     </div>
                     <div class="win">
                         {{text.potentialProfit}}<span>{{maybeWin}}</span>Ks

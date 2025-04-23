@@ -162,46 +162,42 @@ body{
                 }
             }
             .live-history{
-
                 text-align: center;
                 font-size: .64rem;
                 width: 50%;
                 background-color: @color-primary;
-                .text{
-                    font-size: 0.9667rem;
-                    span{
-                        color: @color-gold;
-                        font-weight: 900;
-                    }
+                padding: .5333rem .5333rem;
+                overflow: auto;
+                .top{
+                    font-size: .8rem;
+                    color: @color-gold;
                 }
-                li{
-                    padding: .2667rem;
-                    // border: 1px solid #ccc;
-                    .time{
-                        font-size: .8rem;
-                        background-color: #ccc;
-                    }
-                    .result{
-                        text-align: center;
-                        display: flex;
-                        justify-content: space-around;
-                        background-color: @color-gold;
-                        box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
-
-                        .num{
-                            font-size: 1.0667rem;
-                            color: @color-primary;
+                table{
+                    margin: 0 auto;
+                    width: 100%;
+                    text-align: center;
+                    border-collapse: collapse;
+                    thead{
+                        td{
                             font-weight: 600;
-                            
-                        }
-                        .se,
-                        .val{
-                            height: 1.6667rem;
-                            line-height: 1.6667rem;
+                            font-size: 1.0667rem;
+                            width: 33.33%;
+                            color: @color-bg;
+                            border: 1px solid @color-gold;
                         }
                     }
-                    &:nth-child(2){
-                        margin-top: .2667rem;
+                    tbody{
+                        tr{
+                            td{
+                                font-size: .9333rem;
+                                color: @color-bg;
+                                border: 1px solid @color-gold;
+                            }
+                            .num{
+                                color: @color-gold;
+                                font-weight: 900;
+                            }
+                        }
                     }
                 }
             }

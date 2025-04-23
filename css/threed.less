@@ -35,7 +35,6 @@ html{
         background-color: @color-bg;
     }
 }
-
 ul{
     padding: 0;
     margin: 0;
@@ -55,6 +54,7 @@ body{
 #app{
     max-width: 750px;
     min-width: 320px;
+    height: 120vh;
     background-color: @color-bg;
     margin: 0 auto;
     // border:  .0267rem solid black;
@@ -118,6 +118,36 @@ body{
         width: 18.6667rem;
         margin: 0 auto;
         // border: 1px solid black;
+        .time-out{
+            box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+            margin: .5333rem auto;
+            font-size: .8rem;
+            text-align: center;
+            background-color: #F5A623;
+            width: 70%;
+            padding: .2667rem .2667rem;
+            border-radius: 1.0667rem;
+        }
+        .result{
+            margin: .2667rem auto;
+            border-radius: .2667rem;
+            width: 90%;
+            padding: .5333rem;
+            border: 1px solid #ccc;
+            box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+            ul{
+                li{
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 1.0667rem;
+                    .threeD{
+                        color: @color-primary;
+                        font-weight: 900;
+                    }
+                }
+            }
+
+        }
         .cash{
             box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
 
@@ -138,7 +168,6 @@ body{
                 display: block;
                 margin: .2667rem auto;
                 box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
-
                 font-size: 1rem;
                 padding: .1333rem 1.0667rem;
                 background-color: @color-primary;

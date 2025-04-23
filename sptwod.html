@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">    
     <title>tt</title>
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/sptowd.css">
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.43/builds/moment-timezone-with-data.min.js"></script> -->
@@ -24,13 +24,13 @@
         <nav>
             <div class="top-nav">
                 <ul>
-                    <li class="anv-active">
+                    <li>
                         <a href="./index.html">{{text.twod}}</a>
                     </li>
                     <li>
                         <a href="./threed.html">{{text.threed}}</a>
                     </li>
-                    <li>
+                    <li class="anv-active">
                         <a href="./sptwod.html">{{text.sptwod}}</a>
                     </li>
                 </ul>
@@ -50,34 +50,88 @@
                     <div class="live-time">
                       <span class="glyphicon glyphicon-refresh" v-if="status === false"></span>
                       <span class="glyphicon glyphicon-check" v-else></span>
-                      <a>{{ liveInfo.server_time }}</a>
+                      <a>{{liveInfo.server_time}}</a>
                     </div>
                   </div>
                   
                 <div class="live-history">
-                    <div class="text">{{text.times}}</br><span>{{liveInfo.cryle}}</span></div>
-                    <ul>
-                        <li v-for="(item,index) in liveInfo.liveHistory" :key="index">
-                            <div v-if="index === 0" class="time">12:01PM</div>
-                            <div v-else class="time">4:30PM</div>
-                            <div class="result">
-                                <div class="set">
-                                    <div>set</div>
-                                    <div class="se">{{item.set}}</div>
-                                </div>
-                                <div class="value">
-                                    <div>value</div>
-                                    <div class="val">{{item.value}}</div>
-                                </div>
-                                <div class="number">
-                                    <div>num</div>
-                                    <div class="num">{{item.num}}</div>
-                                </div>
-                            </div>
-                            
-                        </li>
-                        
-                    </ul>
+                    <div class="top">当前周期:<span>1234</span></div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>周期</td>
+                                <td>时间</td>
+                                <td>2D</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0011</td>
+                                <td>--</td>
+                                <td class="num">--</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                            <tr>
+                                <td>0011</td>
+                                <td>19:58</td>
+                                <td class="num">88</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="time-out">{{liveInfo.cryle}}{{text.stopTime}}:</br><span v-if="timeset.day >= 1">{{timeset.day}}天</span>{{timeset.hour}}{{text.hour}}:{{timeset.min}}{{text.min}}{{timeset.sec}}{{text.sec}}</div>
@@ -130,6 +184,6 @@
     </div>
     <script src="./js/flexible.js"></script>
     <script src="./js/vue.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/sptowd.js"></script>
 </body>
 </html>

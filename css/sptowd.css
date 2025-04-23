@@ -140,41 +140,34 @@ body {
   font-size: 0.64rem;
   width: 50%;
   background-color: #D0021B;
+  padding: 0.5333rem 0.5333rem;
+  overflow: auto;
 }
-#app .main .live .live-history .text {
-  font-size: 0.9667rem;
+#app .main .live .live-history .top {
+  font-size: 0.8rem;
+  color: #F5A623;
 }
-#app .main .live .live-history .text span {
+#app .main .live .live-history table {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+#app .main .live .live-history table thead td {
+  font-weight: 600;
+  font-size: 1.0667rem;
+  width: 33.33%;
+  color: #FFF9F0;
+  border: 1px solid #F5A623;
+}
+#app .main .live .live-history table tbody tr td {
+  font-size: 0.9333rem;
+  color: #FFF9F0;
+  border: 1px solid #F5A623;
+}
+#app .main .live .live-history table tbody tr .num {
   color: #F5A623;
   font-weight: 900;
-}
-#app .main .live .live-history li {
-  padding: 0.2667rem;
-}
-#app .main .live .live-history li .time {
-  font-size: 0.8rem;
-  background-color: #ccc;
-}
-#app .main .live .live-history li .result {
-  text-align: center;
-  display: flex;
-  justify-content: space-around;
-  background-color: #F5A623;
-  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
-  /* 阴影效果 */
-}
-#app .main .live .live-history li .result .num {
-  font-size: 1.0667rem;
-  color: #D0021B;
-  font-weight: 600;
-}
-#app .main .live .live-history li .result .se,
-#app .main .live .live-history li .result .val {
-  height: 1.6667rem;
-  line-height: 1.6667rem;
-}
-#app .main .live .live-history li:nth-child(2) {
-  margin-top: 0.2667rem;
 }
 #app .main .main-btn {
   margin-top: 0.2667rem;

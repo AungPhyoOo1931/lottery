@@ -209,36 +209,24 @@ const app = new Vue({
       },
       getTimeOut() {
         const nowTime = moment().tz('Asia/Yangon');
-        const first = nowTime.clone().set({
-          hour: 11,
-          minute: 45,
-          second: 0,
-          millisecond: 0
+      
+        // 创建三个目标时间点
+        const checkpoints = [0,15,45].map(min => {
+          let t = nowTime.clone().set({ minute: min, second: 0, millisecond: 0 });
+          // 如果已经超过当前这个点，往后推一小时
+          if (t.isBefore(nowTime)) {
+            t.add(1, 'hour');
+          }
+          return t;
         });
-        const second = nowTime.clone().set({
-          hour: 15,
-          minute: 45,
-          second: 0,
-          millisecond: 0
+      
+        // 获取最小的时间差
+        const nextTime = checkpoints.reduce((minT, t) => {
+          return t.diff(nowTime) < minT.diff(nowTime) ? t : minT;
         });
-        let diffTime;
-        const day = nowTime.day();
-        let nextFirst = first.clone().add(1, 'day');
-        if (day === 0) {
-          nextFirst = first.clone().add(1, 'day');
-          diffTime = nextFirst.diff(nowTime);
-        } else if(day === 6){
-          nextFirst = first.clone().add(2, 'day');
-          diffTime = nextFirst.diff(nowTime);
-        }else if (nowTime.isBefore(first)) {
-          diffTime = first.diff(nowTime);
-        } else if (nowTime.isBefore(second)) {
-          diffTime = second.diff(nowTime);
-        } else {
-          diffTime = nextFirst.diff(nowTime);
-        }
-        return diffTime;
-      },
+      
+        return nextTime.diff(nowTime); // 返回毫秒数
+      },      
       getTime() {
         setInterval(() => {
           const diffTime = this.getTimeOut();

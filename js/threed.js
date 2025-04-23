@@ -20,7 +20,14 @@ const app = new Vue({
           history:"History",
           post:"post",
           info:"Account",
-          NodeText : ""
+          NodeText : "",
+          day:"day",
+          hour:"hour",
+          min:"minute",
+          sec:"seconds",
+          twod:'thai2D',
+          threed:'thai3D',
+          sptwod:'s-2D'
         },
         zh:{
           title:'彩票大师',
@@ -39,7 +46,14 @@ const app = new Vue({
           history:"历史",
           post:"公告",
           info:"我的",
-          NodeText : ""
+          NodeText : "",
+          day:"天",
+          hour:"小时",
+          min:"分钟",
+          sec:"秒",
+          twod:'泰国2D',
+          threed:'泰国3D',
+          sptwod:'快2D'
         },
         my:{
           title:'Lottery Manager',
@@ -58,7 +72,14 @@ const app = new Vue({
           history:"သမိုင်း",
           post:"ကြေညာချက်",
           info:"အကောင့်",
-          NodeText : ""
+          NodeText : "",
+          day:"ရက်",
+          hour:"နာရီ",
+          min:"မိနစ်",
+          sec:"စက္ကန့်",
+          twod:'ထိုင်း2D',
+          threed:'ထိုင်း3D',
+          sptwod:'s-3D'
         }
       },
       timeset:{
@@ -67,6 +88,8 @@ const app = new Vue({
         min:0,
         sec:0,
       },
+      resultData:{},
+      choiceNumber:'',
       node:{
         nodeShow:false,
       },
@@ -74,12 +97,10 @@ const app = new Vue({
       balance:0,
       timr:"",
       amount:0,//下注金额
-      betType:1,//玩法1:单选,2:字头,3:自慰
     },
     mounted() {  
-      this.showBetList(100);  
       this.getTime()
-      this.show2DLive()
+      this.getHistory()
       let lang = document.documentElement.lang;
       const newLang = localStorage.getItem('lang') || null
       if(newLang){
@@ -94,112 +115,47 @@ const app = new Vue({
       text() {
         return this.language[this.lang] || {};
       },
-      totalAmount(){
-        return this.amount * this.configBetList.length
+      totalBet(){
+        return this.amount
       },
       maybeWin(){
-        if(this.configBetList.length === 0){
+        if(this.choiceNumber === ''){
           return 0
         }
-        if(this.betType === 1){
-            return (this.amount || 0) * 80
-        }else{
-            return (this.amount || 0) * 8
-        }
-      },
+        return this.amount * 700
+      }
     },
     methods: {
-      setLang(){
-        localStorage.setItem('lang',this.lang)
-      },
-      async show2DLive() {
-        const self = this // 保存当前作用域的 this
-      
-        async function temp() {
-          const nowTime = moment().tz('Asia/Yangon')
-          const res = await axios.get('https://api.thaistock2d.com/live')
-          const data = res.data
-          const live = self.liveInfo // 使用外层的 this
-      
-          live.live = data.live
-      
-          if (data.holiday.status === "3") {
-            live.twod = data.result[3].twod
-            live.server_time = data.result[3].stock_datetime
-            return
-          }
-      
-          live.server_time = data.server_time
-          live.liveHistory[0].set = data.result[1].set
-          live.liveHistory[0].value = data.result[1].value
-          live.liveHistory[0].num = data.result[1].twod
-          live.liveHistory[1].set = data.result[3].set
-          live.liveHistory[1].value = data.result[3].value
-          live.liveHistory[1].num = data.result[3].twod
-          this.status = false
-          if (nowTime.hour() === 12) {
-            live.server_time = data.result[1].stock_datetime
-            live.live.twod = data.result[1].twod
-            this.status = true
-          } else if (nowTime.hour() === 16) {
-            live.server_time = data.result[3].stock_datetime
-            live.live.twod = data.result[3].twod
-            this.status = true
-          }
-        }
-      
-        await temp()
-        setInterval(temp, 5000)
-      },      
-      showBetList(count) {
-        this.betList = Array.from({ length: count }, (_, index) => ({
-          id: index + 1,
-          value: index,
-          checked: false,
-        }));
-      },
-      configBet() {
+      async getHistory(){
+        const res = await axios.get('https://api.2dboss.com/api/v2/v1/2dstock/threed-result')
+        const data = res.data
+        console.log(data);
+        this.resultData = data.data
+        console.log(this.resultData);
         
-        this.betList = this.betList
-        this.configBetList = [];
-        this.betList.forEach(item => {
-          if (item.checked) {
-            this.configBetList.push(item.value);
-          }
-        });
       },
       getTimeOut() {
         const nowTime = moment().tz('Asia/Yangon');
-        const first = nowTime.clone().set({
-          hour: 11,
-          minute: 45,
-          second: 0,
-          millisecond: 0
-        });
-        const second = nowTime.clone().set({
-          hour: 15,
-          minute: 45,
-          second: 0,
-          millisecond: 0
-        });
-        let diffTime;
-        const day = nowTime.day();
-        let nextFirst = first.clone().add(1, 'day');
-        if (day === 0) {
-          nextFirst = first.clone().add(1, 'day');
-          diffTime = nextFirst.diff(nowTime);
-        } else if(day === 6){
-          nextFirst = first.clone().add(2, 'day');
-          diffTime = nextFirst.diff(nowTime);
-        }else if (nowTime.isBefore(first)) {
-          diffTime = first.diff(nowTime);
-        } else if (nowTime.isBefore(second)) {
-          diffTime = second.diff(nowTime);
+      
+        // 本月1号和16号的 12:00
+        let firstDay = nowTime.clone().set({ date: 1, hour: 12, minute: 0, second: 0, millisecond: 0 });
+        let midDay = nowTime.clone().set({ date: 16, hour: 12, minute: 0, second: 0, millisecond: 0 });
+      
+        let target;
+      
+        if (nowTime.isBefore(firstDay)) {
+          // 当前时间 < 本月1号12:00，目标是本月1号
+          target = firstDay;
+        } else if (nowTime.isBefore(midDay)) {
+          // 当前时间在 1号 和 16号之间
+          target = midDay;
         } else {
-          diffTime = nextFirst.diff(nowTime);
+          // 当前时间在16号之后，目标是下个月1号
+          target = firstDay.add(1, 'month');
         }
-        return diffTime;
-      },
+      
+        return target.diff(nowTime);
+      },      
       getTime() {
         setInterval(() => {
           const diffTime = this.getTimeOut();
@@ -217,64 +173,5 @@ const app = new Vue({
           this.timeset.sec = String(duration.seconds()).padStart(2, '0');
         }, 1000);
       },
-      reverseNum(num) {
-        const str = String(num).padStart(2, '0');
-        return parseInt(str.split('').reverse().join(''), 10); // join('') 而不是 join()
-      },      
-      choiceR(){
-        if(this.betType !== 1){
-          return
-        }
-        for(let i = 0; i < this.configBetList.length; i++){
-          const newNum = this.reverseNum(this.configBetList[i])
-          console.log(newNum);
-          
-          this.betList[newNum].checked = true
-        }
-      },
-      choiceH(){
-        this.showBetList(10)
-      },
-      choiceT(){
-        this.showBetList(10)
-      },
-      clearConfig(){
-        this.configBetList = []
-      },
-      bet(){
-        clearTimeout(this.timr)
-        this.timr = setTimeout(() => {
-          let amount = this.amount || null
-          let totalAmount = this.amount * this.configBetList.length || null
-          if(amount <= 100){
-            this.language.en.NodeText = "Minimum bet 100ks"
-            this.language.zh.NodeText = "最低下注100ks"
-            this.language.my.NodeText = "အနည်းဆုံး100ကျပ်ထိုးရန်"
-            this.Node()
-            return
-          }
-          if(this.configBetList.length <= 0){
-            this.language.en.NodeText = "Please select a number"
-            this.language.zh.NodeText = "请选择数字"
-            this.language.my.NodeText = "ဂဏန်းရွေးပါ"
-            this.Node()
-            return
-          }
-          if(this.balance < totalAmount){
-            this.language.en.NodeText = "Insufficient balance"
-            this.language.zh.NodeText = "余额不足"
-            this.language.my.NodeText = "လက်ကျန်ငွေမလုံလောက်ပါ"
-            this.Node()
-            return
-          }
-        },300)
-      },
-      Node(){
-        this.node.nodeShow = true
-        setTimeout(() => {
-          this.node.nodeShow = false
-        }, 3000);
-      }
     }
-    
-  })
+})

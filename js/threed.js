@@ -61,20 +61,6 @@ const app = new Vue({
           NodeText : ""
         }
       },
-      liveInfo:{
-        server_time:'--',
-        cryle:123456,
-        live:{
-          set:"--",
-          value:"--",
-          time:"--",
-          twod:"--",
-        },
-        liveHistory:[
-            {set:12345.01,value:12345.01,num:45},
-            {set:12345.11,value:12345.11,num:11}
-           ]
-        },
       timeset:{
         day:0,
         hour:0,
@@ -87,8 +73,6 @@ const app = new Vue({
       status:false,
       balance:0,
       timr:"",
-      configBetList: [],//选中号码
-      betList:[],//渲染号码按钮
       amount:0,//下注金额
       betType:1,//玩法1:单选,2:字头,3:自慰
     },

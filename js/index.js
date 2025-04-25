@@ -29,6 +29,7 @@ const app = new Vue({
         threed:'thai3D',
         sptwod:'s-2D',
         configText:'times confirm bet',
+        betOpenTime:opentime,
         configTitle:'Please confirm',
         configBtn:'OK',
         cancleBtn:'cancel'
@@ -59,6 +60,7 @@ const app = new Vue({
         threed:'泰国3D',
         sptwod:'快2D',
         configText:'期下注',
+        betOpenTime:opentime,
         configTitle:'请确认',
         configBtn:'确认',
         cancleBtn:'取消'
@@ -89,6 +91,7 @@ const app = new Vue({
         threed:'ထိုင်း3D',
         sptwod:'s-3D',
         configText:'ကြိမ်အတွက်ထိုးမည်',
+        betOpenTime:opentime,
         configTitle:'အတည်ပြုပါ',
         configBtn:'OK',
         cancleBtn:'cancel'
@@ -433,7 +436,7 @@ const app = new Vue({
       const betData = this
       this.showAlert({
         title: this.text.configTitle,
-        text: `${this.liveInfo.cryle}${this.text.configText}`,
+        text: `${this.liveInfo.cryle}${this.text.configText}<br>开奖时间:${this.text.betOpenTime}`,
         icon: 'warning',
         showCancel: true,
         confirmText: this.text.configBtn,

@@ -4,7 +4,7 @@ const app = new Vue({
       lang:'',
       language:{
         en:{
-          title:'Lottery Manager',
+          title:'Lottery Master',
           times:'times:',
           stopTime:'times Stop betting countdown',
           choice:"choose",
@@ -56,7 +56,7 @@ const app = new Vue({
           sptwod:'快2D'
         },
         my:{
-          title:'Lottery Manager',
+          title:'Lottery Master',
           times:'ယခုကြိမ်နူန်း:',
           stopTime:'ကြိမ်ထိုးခြင်းပိတ်ရန်',
           choice:"ရွေးမည်",

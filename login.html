@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">    
+    <title>tt</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <!-- <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.43/builds/moment-timezone-with-data.min.js"></script> -->
+    <script src="./js/moment.js"></script>
+    <script src="./js/moment-timezone-with-data.min.js"></script>
+    <script src="./js/axios.js"></script>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet"> -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar&display=swap" rel="stylesheet"> -->
+
+</head>
+<body>
+    <div id="app" v-cloak>
+        <header>
+            <div class="log">{{text.title}}</div>
+        </header> 
+        <div class="login" v-if="isLogin === false">
+            <div class="text">登录</div>
+            <label for="username">用户名</label>
+            <input type="text" name="username" id="username" v-model="loginData.username"><br>
+            <label for="password">密码</label>
+            <input type="password" name="password" id="password" v-model="loginData.password">
+            <div class="btn">
+                <button @pointerup="login()">确认登录</button>
+                <button @pointerup="isLogin = true">注册</button>
+            </div>
+        </div>
+        <div class="login" v-else>
+            <div class="text">注册</div>
+            <label for="username">用户名</label>
+            <input type="text" name="username" id="username" v-model="registerData.username"><br>
+            <label for="password">密码</label>
+            <input type="password" name="password" id="password" v-model="registerData.password"><br>
+            <label for="configpassword">确认密码</label>
+            <input type="password" name="configpassword" id="configpassword" v-model="registerData.configPasswrod"><br>
+            <label for="inver">邀请码</label>
+            <input type="text" name="inver" id="inver" v-model="registerData.inver">
+            <div class="btn">
+                <button @pointerup="register()">确认注册</button>
+                <button @pointerup="isLogin = false">登录</button>
+            </div>
+        </div>
+        <div class="note" :style="{display:node.nodeShow ? 'block' : 'none'}">
+            {{text.nodeText}}
+        </div>
+    </div>
+    <script src="./js/flexible.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

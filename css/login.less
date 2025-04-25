@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-boxs;
+}
+// 红包配色方案
+
+// 主色：红包红，强烈的吸引力
+@color-primary: #D0021B; // 正红色（主按钮、强调）
+
+// 次主色：金黄色，代表财富
+@color-gold: #F5A623; // 金黄色（财富感）
+
+// 背景色：米色，柔和的背景色，减少刺眼
+@color-bg: #FFF9F0; // 米色背景（不刺眼）
+
+// 文字颜色：深灰色，适合阅读的字体颜色
+@color-text: #3C3C3C; // 深灰（阅读舒适）
+
+// 成功提示色：绿色，象征成功、中奖
+@color-success: #28A745; // 中奖绿色
+
+// 错误提示色：红色，提醒用户错误
+@color-error: #E74C3C; // 错误红色
+
+// 辅助色：深红色，次要按钮或悬浮效果
+@color-dark-red: #C0392B; // 深红（次按钮/悬浮）
+html{
+    font-family: "Noto Sans", "Noto Sans SC", "Noto Sans Myanmar", Arial, "Microsoft YaHei", "Myanmar Text", sans-serif;
+
+}
+@media screen and (min-width:750px) {
+    html{
+        font-size: 37.5px !important;
+        background-color: @color-bg;
+    }
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+}
+li{
+    list-style: none;
+    
+}
+body{
+    font-size: 1rem;
+    
+}
+[v-cloak] {
+    display: none;
+  }
+  
+#app{
+    max-width: 750px;
+    min-width: 320px;
+    background-color: @color-bg;
+    margin: 0 auto;
+    height: 100vh;
+    // border:  .0267rem solid black;
+    position: relative;
+    a{
+        color: #333;
+        text-decoration: none;
+    }
+    header{
+        width: 100%;
+        height: 2.1333rem;
+        line-height: 2.1333rem;
+        text-align: center;
+        background-color: @color-primary;
+        box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+        .log{
+            width: 100%;
+            color: @color-gold;
+            font-size: 1.6rem;
+            font-weight: 900;
+        }
+    }
+    
+    .login{
+        width: 10rem;
+        border: 1px solid #3C3C3C;
+        box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+        padding: .5333rem;
+        text-align: center;
+        border-radius: .5333rem;
+        margin: 1.3333rem auto;
+        input{
+            font-size: 1rem;
+            width: 8rem;
+        }
+        label{
+            font-size: 1rem;
+        }
+        .btn{
+            margin-top: .7333rem;
+            display: flex;
+            justify-content: space-around;
+            button{
+                box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+                font-size: .8rem;
+                padding: .1333rem .5333rem;
+                // background-color: @color-gold;
+                color: @color-primary;
+                border: .1067rem solid @color-dark-red;
+                border-radius: 1.0667rem;
+                background-color: @color-bg;
+                &:active{
+                    color: @color-gold;
+                    border: .1067rem solid @color-dark-red;
+                    background-color: @color-primary;
+                    border-radius: 1.0667rem;
+                }
+            }
+        }
+    }
+
+    .note{
+        background-color: #3C3C3C;
+        font-size: .8rem;
+        padding: .1333rem .8rem;
+        border-radius: .8rem;
+        color: #fff;
+        width: 7rem;
+        text-align: center;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    
+}

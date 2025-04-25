@@ -14,6 +14,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar&display=swap" rel="stylesheet">
+<!-- 引入 SweetAlert2 的 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.min.css" rel="stylesheet">
+
+<!-- 引入 SweetAlert2 的 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.all.min.js"></script>
+
 
 </head>
 <body>
@@ -110,7 +116,7 @@
                     <div class="win">
                         {{text.potentialProfit}}<span>{{maybeWin}}</span>Ks
                     </div>
-                    <button  type="button" class="config" @pointerup="bet()">{{text.configBet}}</button>
+                    <button  type="button" class="config" @pointerup="checkLogin()">{{text.configBet}}</button>
                 </div>
             </div>
         </div>

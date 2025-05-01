@@ -235,7 +235,7 @@ body{
             }
         }
         .bet{
-            ul{
+            .betBtn{
                 display: flex;
                 justify-content: space-around;
                 flex-wrap: wrap;
@@ -308,6 +308,55 @@ body{
                 }
             }
         }
+        .history{
+            li{
+                padding: .5333rem;
+                text-align: center;
+                margin: .8rem auto;
+                width: 15;
+                // background-color: @color-primary; 
+                .date{
+                    font-size: 1.0667rem;
+                    color: @color-text;
+                }
+                .reusl{
+                    margin-top: .5333rem;
+                    border: .1067rem solid @color-gold;
+                    padding: .5333rem;
+                    border-radius: 1.3333rem;
+                    box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+                    .time{
+                        font-size: .8rem;
+                        color: @color-gold;
+                        padding: 0 .2667rem;
+                        width: 5.6667rem;
+                        border: .1067rem solid @color-gold;
+                        background-color: @color-bg;
+                        border-radius: 1.0667rem;
+                        font-weight: 600;
+                        margin: 0 auto;
+                    }
+                    .result{
+                        margin-top: .2667rem;
+                        display: flex;
+                        justify-content: space-around;
+                        font-size: 1.0667rem;
+                        color: @color-text;
+                        align-items: center;
+                        .num{
+                            // font-size: 1.0667rem;
+                            color: @color-gold;
+                            font-weight: 900;
+                        }
+                        .value,
+                        .number,
+                        .set{
+                            flex: 1;
+                        }
+                    }
+                }
+            }
+        }
     }
     
     .note{
@@ -322,6 +371,90 @@ body{
         left: 50%;
         top: 50%;
         transform: translate(-50%,-50%);
+    }
+
+    .loadding{
+        text-align: center;
+        width: 8rem;
+        padding: .8rem;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border: .1067rem solid @color-primary;
+        color: @color-primary;
+        box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+        background-color: @color-bg;
+        border-radius: .8rem;
+        .glyphicon-refresh {
+            animation: rotate 1s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+    .nodeBet{
+        text-align: center;
+        width: 15rem;
+        padding: .8rem;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border: .1067rem solid @color-primary;
+        color: @color-primary;
+        box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+        background-color: @color-bg;
+        border-radius: .8rem;
+        h4{
+            font-size: 2.1333rem;
+        }
+        p{
+            font-size: 1.0667rem;
+        }
+        .btn{
+            display: flex;
+            justify-content: space-around;
+            button{
+                font-size: .8rem;
+                border: .1067rem solid @color-primary;
+                padding: 0 .5333rem;
+                border-radius: .5333rem;
+                background-color: @color-bg;
+                &:active {
+                    background-color: @color-primary;
+                    color: @color-gold;
+                  }
+            }
+        }
+    }
+    .files,
+    .success{
+        text-align: center;
+        width: 8rem;
+        padding: .8rem;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border: .1067rem solid @color-primary;
+        color: @color-success;
+        box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+        background-color: @color-bg;
+        border-radius: .8rem;
+        font-size: 3.3333rem;
+        p{
+            font-size: 1.0667rem;
+        }
+    }
+    .files{
+        color: @color-error;
     }
 
     footer{

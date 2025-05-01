@@ -202,7 +202,89 @@ body{
             }
         }
     }
-    
+    .loadding{
+        text-align: center;
+        width: 8rem;
+        padding: .8rem;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border: .1067rem solid @color-primary;
+        color: @color-primary;
+        box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+        background-color: @color-bg;
+        border-radius: .8rem;
+        .glyphicon-refresh {
+            animation: rotate 1s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+    .nodeBet{
+        text-align: center;
+        width: 15rem;
+        padding: .8rem;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border: .1067rem solid @color-primary;
+        color: @color-primary;
+        box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+        background-color: @color-bg;
+        border-radius: .8rem;
+        h4{
+            font-size: 2.1333rem;
+        }
+        p{
+            font-size: 1.0667rem;
+        }
+        .btn{
+            display: flex;
+            justify-content: space-around;
+            button{
+                font-size: .8rem;
+                border: .1067rem solid @color-primary;
+                padding: 0 .5333rem;
+                border-radius: .5333rem;
+                background-color: @color-bg;
+                &:active {
+                    background-color: @color-primary;
+                    color: @color-gold;
+                  }
+            }
+        }
+    }
+    .files,
+    .success{
+        text-align: center;
+        width: 8rem;
+        padding: .8rem;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border: .1067rem solid @color-primary;
+        color: @color-success;
+        box-shadow: 0 .16rem .2667rem rgba(0, 0, 0, 0.2); /* 阴影效果 */
+        background-color: @color-bg;
+        border-radius: .8rem;
+        font-size: 3.3333rem;
+        p{
+            font-size: 1.0667rem;
+        }
+    }
+    .files{
+        color: @color-error;
+    }
     .note{
         background-color: #3C3C3C;
         font-size: .8rem;

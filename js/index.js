@@ -28,11 +28,23 @@ const app = new Vue({
         twod:'thai2D',
         threed:'thai3D',
         sptwod:'s-2D',
-        configText:'times confirm bet',
-        betOpenTime:opentime,
-        configTitle:'Please confirm',
-        configBtn:'OK',
-        cancleBtn:'cancel'
+        history:'history',
+        node:{
+          nodeBet:{
+            nodeBeth4:"Confirm bet",
+            p1:"Current times",
+            p2:"Drawing time",
+            p4:"Bet cannot be cancelled after placing",
+            config:"Confirm",
+            cancle:"Cancel"
+          },
+          success:{
+            textp:"Success!"
+          },
+          files:{
+            textp:'Failed!'
+          }
+        }
       },
       zh:{
         title:'彩票大师',
@@ -59,11 +71,23 @@ const app = new Vue({
         twod:'泰国2D',
         threed:'泰国3D',
         sptwod:'快2D',
-        configText:'期下注',
-        betOpenTime:opentime,
-        configTitle:'请确认',
-        configBtn:'确认',
-        cancleBtn:'取消'
+        history:'历史',
+        node:{
+          nodeBet:{
+            nodeBeth4:"确认下注",
+            p1:"当前周期",
+            p2:"开奖时间",
+            p4:"下注后不可取消",
+            config:"确认",
+            cancle:"取消"
+          },
+          success:{
+            textp:"成功!"
+          },
+          files:{
+            textp:'失败!'
+          }
+        }
       },
       my:{
         title:'Lottery Manager',
@@ -90,13 +114,26 @@ const app = new Vue({
         twod:'ထိုင်း2D',
         threed:'ထိုင်း3D',
         sptwod:'s-3D',
-        configText:'ကြိမ်အတွက်ထိုးမည်',
-        betOpenTime:opentime,
-        configTitle:'အတည်ပြုပါ',
-        configBtn:'OK',
-        cancleBtn:'cancel'
+        history:'သမိုင်း',
+        node:{
+          nodeBet:{
+            nodeBeth4:"အတည်ပြုပါ",
+            p1:"ယခုအကြိမ်",
+            p2:"ဖွင့်မည့်ချိန်",
+            p4:"အတည်ပြုပြီးပါကပြန်လည်ပယ်ဖြတ်မရပါ",
+            config:"အတည်ပြပါ",
+            cancle:"ပယ်ဖျက်ပါ"
+          },
+          success:{
+            textp:"အောင်မြင်ပါသည်!"
+          },
+          files:{
+            textp:'မအောင်မြင်ပါ'
+          }
+        }
       }
     },
+    
     liveInfo:{
       server_time:'--',
       cryle:123456,
@@ -117,8 +154,13 @@ const app = new Vue({
       min:0,
       sec:0,
     },
+    liveHistory:[],
     node:{
       nodeShow:false,
+      loadding:false,
+      nodeBet:false,
+      success:false,
+      files:false
     },
     openTime:'',
     status:false,
@@ -128,13 +170,16 @@ const app = new Vue({
     betList:[],//渲染号码按钮
     amount:0,//下注金额
     betType:1,//玩法1:单选,2:字头,3:自尾
-    canBet:0
+    canBet:0,
+    is_close_day:0,
   },
   mounted() {  
-    this.getTimes()
+    this.node.loadding = true
+    
     this.showBetList(100);  
     this.getTime()
     this.show2DLive()
+    this.get2DHistroy()
     let lang = document.documentElement.lang;
     const newLang = localStorage.getItem('lang') || null
     if(newLang){
@@ -144,6 +189,7 @@ const app = new Vue({
       this.lang = 'en'
       localStorage.setItem('lang',this.lang)
     }
+    this.node.loadding = false
   },
   computed:{
     text() {
@@ -152,6 +198,19 @@ const app = new Vue({
     totalAmount(){
       return this.amount * this.configBetList.length
     },
+    
+    maybeWin(){
+      if(this.configBetList.length === 0){
+        return 0
+      }
+      if(this.betType === 1){
+          return (this.amount || 0) * 80
+      }else{
+          return (this.amount || 0) * 8
+      }
+    },
+  },
+  methods: {
     opentime(){
       // 当前时间（缅甸时间）
       let openTime;
@@ -183,7 +242,7 @@ const app = new Vue({
             second: 0,
             millisecond: 0
           });
-        }else if(weekday === 0){
+        }else if(weekday === 0 || this.is_close_day === 1){
           openTime = moment().tz('Asia/Yangon').add(1, 'days').set({
             hour: 12,
             minute: 1,
@@ -214,57 +273,53 @@ const app = new Vue({
         }
         return moment(openTime).format('YYYY-MM-DD HH:mm')
     },
-    maybeWin(){
-      if(this.configBetList.length === 0){
-        return 0
-      }
-      if(this.betType === 1){
-          return (this.amount || 0) * 80
-      }else{
-          return (this.amount || 0) * 8
-      }
-    },
-  },
-  methods: {
     setLang(){
       localStorage.setItem('lang',this.lang)
     },
     async show2DLive() {
       const self = this // 保存当前作用域的 this
-      this.getTimes()
+      
       async function temp() {
+        self.getTimes()
         const nowTime = moment().tz('Asia/Yangon')
-        const res = await axios.get('https://api.thaistock2d.com/live')
-        const data = res.data
+        const res = await axios.get('https://luke.2dboss.com/api/luke/twod-result-live')
+        const data = res.data.data
         const live = self.liveInfo // 使用外层的 this
     
-        live.live = data.live
-    
-        if (data.holiday.status === "3") {
-          live.twod = data.result[3].twod
-          live.server_time = data.result[3].stock_datetime
+        // live.live = data.live
+        self.is_close_day = data.is_close_day
+        if (data.is_close_day === 1) {
+          live.live.twod = data.result_430
+          live.server_time = data.time_430
+          live.liveHistory[0].set = data.set_1200
+          live.liveHistory[0].value = data.val_1200
+          live.liveHistory[0].num = data.result_1200
+          live.liveHistory[1].set = data.set_430
+          live.liveHistory[1].value = data.val_430
+          live.liveHistory[1].num = data.result_430
+          self.status = true
           return
         }
         
-        live.server_time = data.server_time
-        live.liveHistory[0].set = data.result[1].set
-        live.liveHistory[0].value = data.result[1].value
-        live.liveHistory[0].num = data.result[1].twod
-        live.liveHistory[1].set = data.result[3].set
-        live.liveHistory[1].value = data.result[3].value
-        live.liveHistory[1].num = data.result[3].twod
-        self.status = false
-        if (nowTime.hour() === 12 && data.result[1].history_id) {
-          live.server_time = data.result[1].stock_datetime
-          live.live.twod = data.result[1].twod
-          self.status = true
-        } else if ((nowTime.hour() === 16 || nowTime.hour() === 17) && data.result[3].history_id) {
-          console.log(1);
-          
-          live.server_time = data.result[3].stock_datetime
-          live.live.twod = data.result[3].twod
-          self.status = true
-        }
+          live.liveHistory[0].set = data.set_1200
+          live.liveHistory[0].value = data.val_1200
+          live.liveHistory[0].num = data.result_1200
+          live.liveHistory[1].set = data.set_430
+          live.liveHistory[1].value = data.val_430
+          live.liveHistory[1].num = data.result_430
+          self.status = false
+          live.server_time = data.current_time
+          live.live.twod = data.live
+          if(data.status_1200 === 'backend' ){
+            self.status = true
+            live.server_time = data.time_430
+          }
+           if(data.status_430 === 'backend'){
+            self.status = true
+            live.server_time = data.time_1200
+          }else{
+            self.status = false
+          }
       }
     
       await temp()
@@ -304,7 +359,7 @@ const app = new Vue({
       let diffTime;
       const day = nowTime.day();
       let nextFirst = first.clone().add(1, 'day');
-      if (day === 0) {
+      if (day === 0 || this.is_close_day === 1) {      
         nextFirst = first.clone().add(1, 'day');
         diffTime = nextFirst.diff(nowTime);
       } else if(day === 6){
@@ -350,6 +405,7 @@ const app = new Vue({
         
         this.betList[newNum].checked = true
       }
+      this.configBet()
     },
     choiceH(){
       this.showBetList(10)
@@ -361,18 +417,20 @@ const app = new Vue({
       this.configBetList = []
     },
     async getTimes(){
-      const gameType = this.betType
-      const res = await axios.post('https://2dmaster.com/api/getTimes', {
-        gameType: gameType
-      });        
-      if(res.data.message === 'error'){
-        this.language.en.NodeText = "Unknown error"
-        this.language.zh.NodeText = "未知错误"
-        this.language.my.NodeText = "Unknown error"
-        this.Node()
-        return
-      }
-      this.liveInfo.cryle = res.data.times
+      const sel = this
+        const gameType = sel.betType
+        const res = await axios.post('https://2dmaster.com/api/getTimes', {
+          gameType: gameType
+        });        
+        if(res.data.message === 'error'){
+          sel.language.en.NodeText = "Unknown error"
+          sel.language.zh.NodeText = "未知错误"
+          sel.language.my.NodeText = "Unknown error"
+          sel.Node()
+          return
+        }
+        sel.liveInfo.cryle = res.data.times
+      // setInterval(times(),5000)
     },
     bet(){
       clearTimeout(this.timr)
@@ -380,27 +438,14 @@ const app = new Vue({
         let amount = this.amount || null
         let totalAmount = this.amount * this.configBetList.length || null
         if(amount <= 100){
-          this.language.en.NodeText = "Minimum bet 100ks"
-          this.language.zh.NodeText = "最低下注100ks"
-          this.language.my.NodeText = "အနည်းဆုံး100ကျပ်ထိုးရန်"
-          this.Node()
+          this.nodeWin(false,'Minimum bet 100ks','最低下注100ks','အနည်းဆုံး100ကျပ်ထိုးရန်')
           return
         }
         if(this.configBetList.length <= 0){
-          this.language.en.NodeText = "Please select a number"
-          this.language.zh.NodeText = "请选择数字"
-          this.language.my.NodeText = "ဂဏန်းရွေးပါ"
-          this.Node()
+          this.nodeWin(false,'Please select a number','请选择数字','ဂဏန်းရွေးပါ')
           return
         }
-        if(this.balance < totalAmount){
-          this.language.en.NodeText = "Insufficient balance"
-          this.language.zh.NodeText = "余额不足"
-          this.language.my.NodeText = "လက်ကျန်ငွေမလုံလောက်ပါ"
-          this.Node()
-          return
-        }
-        this.windows()
+        this.node.nodeBet = true
       },300)
     },
     Node(){
@@ -409,82 +454,118 @@ const app = new Vue({
         this.node.nodeShow = false
       }, 3000);
     },
-    //弹窗
-    showAlert({
-      title = '提示',
-      text = '',
-      icon = 'info',
-      showCancel = false,
-      confirmText = '确定',
-      cancelText = '取消',
-      onConfirm = null
-    }) {
-      Swal.fire({
-        title,
-        text,
-        icon,
-        showCancelButton: showCancel,
-        confirmButtonText: confirmText,
-        cancelButtonText: cancelText,
-      }).then((result) => {
-        if (result.isConfirmed && typeof onConfirm === 'function') {
-          onConfirm(); // 调用你传进来的回调
-        }
-      });
-    },    
-    windows(){
-      const betData = this
-      this.showAlert({
-        title: this.text.configTitle,
-        text: `${this.liveInfo.cryle}${this.text.configText}<br>开奖时间:${this.text.betOpenTime}`,
-        icon: 'warning',
-        showCancel: true,
-        confirmText: this.text.configBtn,
-        cancelText: '取消',
-        onConfirm: async () => {
-         const userData = JSON.parse(localStorage.getItem('loginData'))
-         const token = userData.token
-         const username = userData.username
-         const res = await axios.post('https://2dmaster.com/api/bet', {
-          amount:betData.amount,
-          betType:betData.betType,
-          betList:betData.configBetList,
-          username:username,
-          gameTimes:betData.liveInfo.cryle,
-          opentime:betData.opentime
-            }, {
-              headers: {
-                Authorization: `Bearer ${token}`  // 通常是这样写
-              }
-            });
-          const data = res.data
-          console.log(data);
-          if(!data.msg){
-            betData.language.en.NodeText = "Insufficient balance"
-            betData.language.zh.NodeText = "下注失败"
-            betData.language.my.NodeText = "လက်ကျန်ငွေမလုံလောက်ပါ"
-            betData.Node()
-            return
-          }
-          betData.language.en.NodeText = "Insufficient balance"
-          betData.language.zh.NodeText = "下注成功"
-          betData.language.my.NodeText = "လက်ကျန်ငွေမလုံလောက်ပါ"
-          betData.Node()
-
-        }
-      });
+    calcleBet(){
+      this.node.nodeBet = false
     },
-    checkLogin(){
-      const token = localStorage.getItem('loginData') || null
-      if(!token){
-        this.language.en.NodeText = "Please login"
-          this.language.zh.NodeText = "请登录"
-          this.language.my.NodeText = "Please login"
-          this.Node()
+    async configBetBtn(){
+      try{
+        this.node.nodeBet = false
+        this.node.loadding = true
+        const userData = JSON.parse(localStorage.getItem('loginData'))
+        const token = userData.token 
+        const username = userData.username
+        const res = await axios.post('https://2dmaster.com/api/bet', {
+         amount:this.amount,
+         betType:this.betType,
+         betList:this.configBetList,
+         username:username,
+         gameTimes:this.liveInfo.cryle,
+         opentime:this.opentime()
+           }, 
+           {
+             headers: {
+               Authorization: `Bearer ${token}`  // 通常是这样写
+             },
+             timeout:5000
+           });
+           this.node.loadding = false
+         const data = res.data
+         console.log(data);
+         if(!data.msg){
+          this.nodeWin(false,'error','未知错误','error')
+           return
+         }
+         const status = data.code
+         if(status === 403){
+          this.nodeWin(false,'error','未知错误','error')
+           return
+         }else if(status === 405){
+          this.nodeWin(false,'This bet is closed','此周期投注已关闭','၄င်းအကြိမ်ပိတ်နေပါသည်')
+          return
+         }else if(status === 406){
+          this.nodeWin(false,'Insufficient balance','余额不足','လက်ကျန်ငွေမလုံလောက်ပါ')
+          return
+         }else if(status === 404){
+          this.nodeWin(false,'The login status is abnormal. Please log in again.','登录状态异常请重新登录','The login status is abnormal. Please log in again.')
+          setTimeout(() => {
+            window.location.href = './login.html'
+          }, 2000);
+          return
+        }
+         this.nodeWin(true,'Success','成功','အောင်မြင်ပါသည်')
+
+      }catch{
+        this.nodeWin(false,'Network error, please try again','网络异常','Network error, please try again')
+        
+        return
+      }
+       
+    },
+    BetcheckLogin(){
+      const token = JSON.parse(localStorage.getItem('loginData')) || null
+      if(!token || !token.token){
+        this.nodeWin(false,'Please log in','请登录','Please log in')
+        setTimeout(() => {
+          window.location.href = './login.html'
+        }, 2000);
           return
       }
       this.bet()
+    },
+    async get2DHistroy(){
+      const res = await axios.get('https://api.thaistock2d.com/2d_result')
+      const data = res.data
+      let tempArr = data
+      .filter((item, index) => index !== 0)  // 先过滤掉第一个
+      .map((item, index) => {
+        return {
+          date:item.date,
+          result:[{
+            time:item.child[1].time,
+            set:item.child[1].set,
+            value:item.child[1].value,
+            twod:item.child[1].twod
+          },
+          {
+            time:item.child[item.child.length - 1].time,
+            set:item.child[item.child.length - 1].set,
+            value:item.child[item.child.length - 1].value,
+            twod:item.child[item.child.length - 1].twod
+          }
+        ],
+        }
+      });
+      this.liveHistory = tempArr
+      console.log(tempArr);
+      
+    },
+    //封装弹窗函数
+    nodeWin(success,ent,zht,mmt){     
+      if(success){
+        this.language.zh.node.success.textp = zht
+        this.language.en.node.success.textp = ent
+        this.language.my.node.success.textp = mmt
+        this.node.loadding = false
+        this.node.success = true
+      }else{
+        this.language.zh.node.files.textp = zht
+        this.language.en.node.files.textp = ent
+        this.language.my.node.files.textp = mmt
+        this.node.loadding = false
+        this.node.files = true
+      }
     }
+    
   }
   
 })

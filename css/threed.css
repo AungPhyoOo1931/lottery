@@ -173,6 +173,92 @@ body {
   background-color: #D0021B;
   color: #F5A623;
 }
+#app .loadding {
+  text-align: center;
+  width: 8rem;
+  padding: 0.8rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.1067rem solid #D0021B;
+  color: #D0021B;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+  background-color: #FFF9F0;
+  border-radius: 0.8rem;
+}
+#app .loadding .glyphicon-refresh {
+  animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#app .nodeBet {
+  text-align: center;
+  width: 15rem;
+  padding: 0.8rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.1067rem solid #D0021B;
+  color: #D0021B;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+  background-color: #FFF9F0;
+  border-radius: 0.8rem;
+}
+#app .nodeBet h4 {
+  font-size: 2.1333rem;
+}
+#app .nodeBet p {
+  font-size: 1.0667rem;
+}
+#app .nodeBet .btn {
+  display: flex;
+  justify-content: space-around;
+}
+#app .nodeBet .btn button {
+  font-size: 0.8rem;
+  border: 0.1067rem solid #D0021B;
+  padding: 0 0.5333rem;
+  border-radius: 0.5333rem;
+  background-color: #FFF9F0;
+}
+#app .nodeBet .btn button:active {
+  background-color: #D0021B;
+  color: #F5A623;
+}
+#app .files,
+#app .success {
+  text-align: center;
+  width: 8rem;
+  padding: 0.8rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.1067rem solid #D0021B;
+  color: #28A745;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+  background-color: #FFF9F0;
+  border-radius: 0.8rem;
+  font-size: 3.3333rem;
+}
+#app .files p,
+#app .success p {
+  font-size: 1.0667rem;
+}
+#app .files {
+  color: #E74C3C;
+}
 #app .note {
   background-color: #3C3C3C;
   font-size: 0.8rem;

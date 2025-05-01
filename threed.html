@@ -30,9 +30,6 @@
                     <li class="anv-active">
                         <a href="./threed.html">{{text.threed}}</a>
                     </li>
-                    <li>
-                        <a href="./sptwod.html">{{text.sptwod}}</a>
-                    </li>
                 </ul>
                 <select v-model="lang" @change="setLang()">
                     <option value="zh">中文</option>
@@ -54,11 +51,11 @@
                     </li>
                 </ul>
             </div>
-            <div class="time-out">{{text.stopTime}}:</br><span v-if="timeset.day >= 1">{{timeset.day}}{{text.day}}</span>{{timeset.hour}}{{text.hour}}:{{timeset.min}}{{text.min}}{{timeset.sec}}{{text.sec}}</div>
+            <div class="time-out">{{cryle}}{{text.stopTime}}:</br><span v-if="timeset.day >= 1">{{timeset.day}}{{text.day}}</span>{{timeset.hour}}{{text.hour}}:{{timeset.min}}{{text.min}}{{timeset.sec}}{{text.sec}}</div>
             <div class="bet ">
                 <div class="cash">
                     <div class="count">
-                        {{text.selectNumber}}:<input type="number"  min="0" max="999" v-model.number="choiceNumber" >
+                        {{text.selectNumber}}:<input type="number"  min="0" max="999" v-model.number="choiceNumber[0]" >
                     </div>
                     <div class="amount">{{text.betAmount}}<input type="number" v-model.number="amount">
                         <div class="amount-btn">
@@ -81,6 +78,28 @@
         <div class="note" :style="{display:node.nodeShow ? 'block' : 'none'}">
             {{text.NodeText}}
         </div>
+        <div v-if="node.loadding" class="loadding">
+            <span class="glyphicon glyphicon-refresh"></span>
+        </div>
+        <div v-if="node.nodeBet" class="nodeBet">
+            <h4>{{text.node.nodeBet.nodeBeth4}}</h4>
+            <p>{{text.node.nodeBet.p1}}:{{cryle}}</p>
+            <p>{{text.node.nodeBet.p2}}:</p>
+            <p v-html="opentime()"></p>
+            <p>{{text.node.nodeBet.p4}}</p>
+            <div class="btn">
+                <button @pointerup="configBetBtn()">{{text.node.nodeBet.config}}</button>
+                <button @pointerup = "calcleBet()">{{text.node.nodeBet.cancle}}</button>
+            </div>
+        </div>
+        <div v-if="node.success"  @pointerup="node.success = false" class="success">
+            <span class="glyphicon glyphicon-ok-circle"></span>
+            <p>{{text.node.success.textp}}</p>
+        </div>
+        <div v-if="node.files" @pointerup="node.files = false" class="files">
+            <span class="glyphicon glyphicon-remove-circle"></span>
+            <p>{{text.node.files.textp}}</p>
+        </div>
         <footer>
             <div class="footer-nav">
                 <ul>
@@ -92,7 +111,7 @@
             </div>
         </footer>
     </div>
-    <script src="./js/flexible.js"></script>
+    <script src="./js/flexible.js"></script> 
     <script src="./js/vue.js"></script>
     <script src="./js/threed.js"></script>
 </body>

@@ -310,13 +310,16 @@ const app = new Vue({
           self.status = false
           live.server_time = data.current_time
           live.live.twod = data.live
-          if(data.status_1200 === 'backend' ){
-            self.status = true
-            live.server_time = data.time_430
-          }
-           if(data.status_430 === 'backend'){
+          const myanmarTime = moment().tz('Asia/Yangon');
+const currentHour = myanmarTime.hour();   // 小时
+const currentMinute = myanmarTime.minute(); // 分钟
+          if(data.status_1200 === "backend" && currentHour === 12){
             self.status = true
             live.server_time = data.time_1200
+          }
+           if(data.status_430 === "backend" && currentHour === 16){
+            self.status = true
+            live.server_time = data.time_430
           }else{
             self.status = false
           }

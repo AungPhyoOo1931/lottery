@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">    
     <title>tt</title>
-    <link rel="stylesheet" href="./css/history.css">
+    <link rel="stylesheet" href="./css/info.css">
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.43/builds/moment-timezone-with-data.min.js"></script> -->
@@ -34,36 +34,7 @@
             </div>
         </nav>
         <div class="main">
-            <ul>
-                <li v-for="(item,index) in data" :key="item.id">
-                    <div class="top">
-                        <div class="times">{{text.betHistory.time}}:<span>{{item.time}}</span></div>
-                        <div class="name">{{item.gametype===1?text.betHistory.name.a : item.gametype===2?text.betHistory.name.b : item.gametype===3?text.betHistory.name.c : text.betHistory.name.d}}</div>
-                    </div>
-                    <div class="result">{{text.betHistory.number}}:<span>{{item.number}}</span></div>
-                    <div class="result">{{text.betHistory.amount}}:<span>{{item.amount}}Ks</span></div>
-                    <div class="result">{{text.betHistory.bet}}:<span>{{item.bet}}</span></div>
-                    <div class="result1">{{text.betHistory.resultNum}}:<span>{{item.result}}</span></div>
-                    <div class="time">{{text.betHistory.join_time}}:{{item.join_time}}</div>
-                    <div class="time">{{text.betHistory.opentime}}:{{item.opentime}}</div>
-                    <div v-if="item.settlement === 1 && item.is_win === 0" class="false">{{text.betHistory.result}}:{{text.betHistory.false}}</div>
-                    <div v-if="item.settlement === 1 && item.is_win === 1" class="win">{{text.betHistory.result}}:{{text.betHistory.win}}</div>
-                    <div v-if="item.settlement === 0 && item.is_win === 0" class="unow">{{text.betHistory.result}}:{{text.betHistory.unow}}</div>
-                </li>
-                <li>
-                    <div class="top">
-                        <div class="times">周期:<span>5</span></div>
-                        <div class="name">泰国2D-单选</div>
-                    </div>
-                    <div class="result">投注号码:<span>12</span></div>
-                    <div class="result1">开奖号码:<span>12</span></div>
-                    <div class="time">投注时间:2025-04-2 11:01:24</div>
-                    <div class="time">开奖时间:2025-04-29 12:01:00</div>
-                    <div class="false">结果:输</div>
-                    <div class="win">结果:赢</div>
-                    <div class="unow">结果:未开奖</div>
-                </li>
-            </ul>
+            
 
         </div>
         <div class="note" :style="{display:node.nodeShow ? 'block' : 'none'}">
@@ -93,6 +64,6 @@
     </div>
     <script src="./js/flexible.js"></script> 
     <script src="./js/vue.js"></script>
-    <script src="./js/history.js"></script>
+    <script src="./js/info.js"></script>
 </body>
 </html>

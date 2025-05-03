@@ -1,0 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-boxs;
+}
+html {
+  font-family: "Noto Sans", "Noto Sans SC", "Noto Sans Myanmar", Arial, "Microsoft YaHei", "Myanmar Text", sans-serif;
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 37.5px !important;
+    background-color: #FFF9F0;
+  }
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+body {
+  font-size: 1rem;
+}
+[v-cloak] {
+  display: none;
+}
+#app {
+  max-width: 750px;
+  min-width: 320px;
+  background-color: #FFF9F0;
+  margin: 0 auto;
+  position: relative;
+}
+#app a {
+  color: #333;
+  text-decoration: none;
+}
+#app header {
+  width: 100%;
+  height: 2.1333rem;
+  line-height: 2.1333rem;
+  text-align: center;
+  background-color: #D0021B;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+}
+#app header .log {
+  width: 100%;
+  color: #F5A623;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+#app nav {
+  width: 100%;
+}
+#app nav .top-nav {
+  height: 2.1333rem;
+}
+#app nav .top-nav ul {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 0.5333rem;
+}
+#app nav .top-nav ul li {
+  height: 1.6333rem;
+  line-height: 1.3333rem;
+  font-size: 1.0667rem;
+  padding: 0.1333rem 0.2667rem;
+  margin-left: 0.2667rem;
+  border-bottom: 0.16rem solid #fff;
+}
+#app nav .top-nav ul .anv-active {
+  border-bottom: 0.16rem solid #F5A623;
+}
+#app nav .top-nav ul .anv-active a {
+  color: #D0021B;
+}
+#app nav select {
+  width: 2.6667rem;
+  height: 1.15rem;
+  line-height: 0.8rem;
+  font-size: 0.5333rem;
+  text-align: center;
+  position: absolute;
+  right: 0.2667rem;
+  top: 2.5333rem;
+}
+#app .main {
+  width: 18rem;
+  margin: 0.5333rem auto;
+}
+#app .main ul li {
+  padding: 0.5333rem;
+  margin: 0.5333rem auto;
+  width: 80%;
+  border: 0.16rem solid #F5A623;
+  border-radius: 1.0667rem;
+}
+#app .main ul li .top {
+  display: flex;
+  font-size: 1rem;
+  justify-content: space-around;
+}
+#app .main ul li .top span {
+  color: #D0021B;
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+#app .main ul li .top .name {
+  color: #F5A623;
+  font-weight: 900;
+}
+#app .main ul li .result1,
+#app .main ul li .result {
+  font-size: 0.8rem;
+}
+#app .main ul li .result1 span {
+  font-size: 0.9rem;
+  color: #F5A623;
+}
+#app .main ul li .time {
+  font-size: 0.8rem;
+}
+#app .main ul li .win,
+#app .main ul li .unow,
+#app .main ul li .false {
+  color: #E74C3C;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+#app .main ul li .win {
+  color: #F5A623;
+}
+#app .main ul li .unow {
+  color: #28A745;
+}
+#app .note {
+  background-color: #3C3C3C;
+  font-size: 0.8rem;
+  padding: 0.1333rem 0.8rem;
+  border-radius: 0.8rem;
+  color: #fff;
+  width: 7rem;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#app .loadding {
+  text-align: center;
+  width: 8rem;
+  padding: 0.8rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.1067rem solid #D0021B;
+  color: #D0021B;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+  background-color: #FFF9F0;
+  border-radius: 0.8rem;
+}
+#app .loadding .glyphicon-refresh {
+  animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#app .nodeBet {
+  text-align: center;
+  width: 15rem;
+  padding: 0.8rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.1067rem solid #D0021B;
+  color: #D0021B;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+  background-color: #FFF9F0;
+  border-radius: 0.8rem;
+}
+#app .nodeBet h4 {
+  font-size: 2.1333rem;
+}
+#app .nodeBet p {
+  font-size: 1.0667rem;
+}
+#app .nodeBet .btn {
+  display: flex;
+  justify-content: space-around;
+}
+#app .nodeBet .btn button {
+  font-size: 0.8rem;
+  border: 0.1067rem solid #D0021B;
+  padding: 0 0.5333rem;
+  border-radius: 0.5333rem;
+  background-color: #FFF9F0;
+}
+#app .nodeBet .btn button:active {
+  background-color: #D0021B;
+  color: #F5A623;
+}
+#app .files,
+#app .success {
+  text-align: center;
+  width: 8rem;
+  padding: 0.8rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.1067rem solid #D0021B;
+  color: #28A745;
+  box-shadow: 0 0.16rem 0.2667rem rgba(0, 0, 0, 0.2);
+  /* 阴影效果 */
+  background-color: #FFF9F0;
+  border-radius: 0.8rem;
+  font-size: 3.3333rem;
+}
+#app .files p,
+#app .success p {
+  font-size: 1.0667rem;
+}
+#app .files {
+  color: #E74C3C;
+}
+#app footer {
+  max-width: 750px;
+  min-width: 320px;
+  margin-top: 2.6667rem;
+  width: 100%;
+}
+#app footer .footer-nav {
+  background-color: #FFF9F0;
+  border-top: 0.0533rem solid #D0021B;
+  position: fixed;
+  bottom: 0;
+  height: 2.3333rem;
+  max-width: 750px;
+  min-width: 320px;
+  width: 100%;
+}
+#app footer .footer-nav ul {
+  height: 100%;
+  line-height: 100%;
+  display: flex;
+  max-width: 750px;
+  min-width: 320px;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.25rem;
+}
+#app footer .footer-nav ul .active a {
+  color: #D0021B;
+  font-weight: 900;
+}

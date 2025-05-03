@@ -203,9 +203,8 @@ const app = new Vue({
     },
     mounted() {  
         this.BetcheckLogin()
-        this.getData()
       let lang = document.documentElement.lang;
-      const newLang = localStorage.getItem('lang') || null
+      const newLang = localStorage.getItem('lang') || lang
       if(newLang){
         document.documentElement.lang = newLang
         this.lang = newLang
@@ -229,50 +228,7 @@ const app = new Vue({
       }
     },
     methods: {
-      async getData(){
-        try{
-            const userData = JSON.parse(localStorage.getItem('loginData')) || null
-            if(!userData){
-                this.nodeWin(false,'Please log in','请登录','Please log in')
-              setTimeout(() => {
-                window.location.href = './login.html'
-              }, 2000);
-                return
-            }
-            const username = userData.username || null
-            const token = userData.token || null
-            if(!username){
-                this.nodeWin(false,'Please log in','请登录','Please log in')
-              setTimeout(() => {
-                window.location.href = './login.html'
-              }, 2000);
-                return
-            }
-            const res = await axios.post('https://2dmaster.com/api/betHistory',{
-                username:username
-            },{
-                headers:{
-                    Authorization:`Bearer ${token}`
-                },
-                timeout:5000
-            })
-            console.log(res.data);
-            const resData = res.data
-            if(resData.code === 502){
-                this.nodeWin(false,'Network error, please try again','网络异常','Network error, please try again')
-                return
-            }else if(resData.code === 404){
-                this.nodeWin(false,'Please Login','重新登录','Please Login')
-                localStorage.removeItem('loginData')
-                window.location.href = './login.html'
-                return
-            }
-            this.data = resData.result
-        }catch{
-            this.nodeWin(false,'Network error, please try again','网络异常','Network error, please try again')
-            return
-        }
-      },        
+     
       BetcheckLogin(){
         const token = JSON.parse(localStorage.getItem('loginData')) || null
         if(!token || !token.token){

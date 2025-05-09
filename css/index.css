@@ -37,6 +37,7 @@ body {
   text-decoration: none;
 }
 #app header {
+  position: fixed;
   width: 100%;
   height: 2.1333rem;
   line-height: 2.1333rem;
@@ -50,6 +51,9 @@ body {
   color: #F5A623;
   font-size: 1.6rem;
   font-weight: 900;
+}
+#app .header-placeholder {
+  height: 2.1333rem;
 }
 #app nav {
   width: 100%;

@@ -3,102 +3,17 @@ const app = new Vue({
     data: {
       lang:'',
       language:{
-        en:{
-          title:'Lottery Master',
-          times:'times:',
-          stopTime:'times Stop betting countdown',
-          choice:"choose",
-          rxuan:'R',
-          head:'Header',
-          floot:'Tail',
-          selectNumber:'Selected number',
-          betAmount:'Bet Amount:',
-          totalBetAmount:'Total Bet Amount:',
-          potentialProfit:"Potential Profit:",
-          configBet:"Confirm bet",
-          game:"Game",
-          history:"History",
-          post:"post",
-          info:"Account",
-          NodeText : "",
-          day:"day",
-          hour:"hour",
-          min:"minute",
-          sec:"seconds",
-          twod:'thai2D',
-          threed:'thai3D',
-          sptwod:'s-2D',
-          betHistory:{
-            name:{a:"Thai2D-choose",b:"Thai2D-Header",c:"Thai2D-tail",d:"Thai3D"},
-            time:"Times",
-            amount:"Bet Amount",
-            number:"Bet Number",
-            resultNum:"Result",
-            opentime:"Open Time",
-            join_time:"Join Tim",
-            false:"Lose",
-            win:"Win",
-            unow:"No prizes awarded",
-            result:"Result",
-            bet:" chance"
-
-          },
-          node:{
-            nodeBet:{
-              nodeBeth4:"Confirm bet",
-              p1:"Current times",
-              p2:"Drawing time",
-              p4:"Bet cannot be cancelled after placing",
-              config:"Confirm",
-              cancle:"Cancel"
-            },
-            success:{
-              textp:"Success!"
-            },
-            files:{
-              textp:'Failed!'
-            }
-          }
-        },
         zh:{
           title:'彩票大师',
           times:'当前周期:',
           betHistory:{
             name:{a:"泰国2D-单选",b:"泰国2D-字头",c:"泰国2D-字尾",d:"泰国3D"},
-            time:"周期",
-            amount:"投注金额",
-            number:"投注号码",
-            resultNum:"开奖号码",
-            opentime:"开奖时间",
-            join_time:"投注时间",
-            false:"输",
-            win:"赢",
-            unow:"未开奖",
-            result:"结果",
-            bet:"赔率"
-
           },
-          choice:"单选",
-          rxuan:'R选',
-          head:'字头',
-          floot:'字尾',
-          selectNumber:'选中号码',
-          betAmount:'下注金额:',
-          totalBetAmount:'总下注金额:',
-          potentialProfit:"潜在盈利:",
-          configBet:"确认下注",
           game:"游戏",
           history:"历史",
           post:"公告",
           info:"我的",
           NodeText : "",
-          day:"天",
-          hour:"小时",
-          min:"分钟",
-          sec:"秒",
-          twod:'泰国2D',
-          threed:'泰国3D',
-          sptwod:'快2D',
           node:{
             nodeBet:{
               nodeBeth4:"确认下注",
@@ -116,66 +31,42 @@ const app = new Vue({
             }
           }
         },
-        my:{
-          title:'Lottery Master',
-          times:'ယခုကြိမ်နူန်း:',
-          stopTime:'ကြိမ်ထိုးခြင်းပိတ်ရန်',
-          choice:"ရွေးမည်",
-          rxuan:'Rမည်',
-          head:'ထိပ်စည်း',
-          floot:'နောက်ပိတ်',
-          selectNumber:'ရွေးချယ်ထားသည့်နံပါတ်',
-          betAmount:'ထိုးကြေး:', 
-          totalBetAmount:'စုစုပေါင်းထိုးကြေး:',
-          potentialProfit:"အနိုင်ရပါက:",
-          configBet:"သေချပါသည်",
-          game:"ဂိမ်းများ",
-          history:"သမိုင်း",
-          post:"ကြေညာချက်",
-          info:"အကောင့်",
-          NodeText : "",
-          day:"ရက်",
-          hour:"နာရီ",
-          min:"မိနစ်",
-          sec:"စက္ကန့်",
-          twod:'ထိုင်း2D',
-          threed:'ထိုင်း3D',
-          sptwod:'s-3D',
-          betHistory:{
-            name:{a:"Thai2D",b:"Thai2D-ထိပ်",c:"Thai2D-ပိတ်",d:"Thai3D"},
-            time:"ကြိမ်",
-            amount:"ထိုးငွေ",
-            number:"နံပါတ်",
-            resultNum:"ဖွင့်သည့်နံပါတ်",
-            opentime:"ဖွင့်ချိန်",
-            join_time:"ထိုးချိန်",
-            false:"ရှုံး",
-            win:"နိုင်",
-            unow:"မဖွင့်သေးပါ",
-            result:"Result",
-            bet:"အဆ"
-
-          },
-          node:{
-            nodeBet:{
-              nodeBeth4:"အတည်ပြုပါ",
-              p1:"ယခုအကြိမ်",
-              p2:"ဖွင့်မည့်ချိန်",
-              p4:"အတည်ပြုပြီးပါကပြန်လည်ပယ်ဖြတ်မရပါ",
-              config:"အတည်ပြပါ",
-              cancle:"ပယ်ဖျက်ပါ"
-            },
-            success:{
-              textp:"အောင်မြင်ပါသည်!"
-            },
-            files:{
-              textp:'မအောင်မြင်ပါ'
-            }
-          }
-          
-        }
       },
-      data:[],
+      userInfo:{
+        userid:'',
+        username:'',
+        userBalance:'',
+        userinvBalance:''
+      },
+      windows:{
+        bank:false,
+        topUp:false,
+        withdrawa:false,
+        temp:false,
+        changePassword:false,
+        cosutomer:false,
+        inverRecord:false,
+        record:false,
+        main:true
+      },
+      topUpData:{
+        topUpType:'',
+        name:'',
+        num:'',
+        inName:'',
+        inNumber:'',
+        fiveDid:'',
+        amount:1000,
+        status:0
+      },
+      tempData:{
+        totalPoint:'',
+        totalIn:'',
+        totalOut:'',
+        data:''
+      },
+      username:'',
+      token:'',
       node:{
         nodeShow:false,
         loadding:false,
@@ -183,26 +74,10 @@ const app = new Vue({
         success:false,
         files:false
       },
-      timeset:{
-        day:0,
-        hour:0,
-        min:0,
-        sec:0,
-      },
-      resultData:{},
-      choiceNumber:[null],
-      node:{
-        nodeShow:false,
-      },
-      cryle:0,
-      status:false,
-      balance:0,
-      timr:"",
-      amount:0,//下注金额
-      betType:5
     },
     mounted() {  
-        this.BetcheckLogin()
+      this.BetcheckLogin()
+      this.getData()
       let lang = document.documentElement.lang;
       const newLang = localStorage.getItem('lang') || lang
       if(newLang){
@@ -228,7 +103,135 @@ const app = new Vue({
       }
     },
     methods: {
-     
+      //关闭所有弹窗
+      closeAll(){
+        this.windows = {
+          bank:false,
+          topUp:false,
+          withdrawa:false,
+          temp:false,
+          changePassword:false,
+          cosutomer:false,
+          inverRecord:false,
+          record:false,
+          main:true
+  
+        }
+      },
+      //初始化充值部分
+      async topUp(){
+        this.node.loadding = true
+        const type = this.topUpData.topUpType
+        try{
+          const token = this.token
+          const res = await axios.post('https://2dmaster.com/api/getAccount',{
+            type:type  
+          },{
+            headers: {
+              Authorization: `Bearer ${token}`  // 通常是这样写
+            },
+            timeout:5000
+          })
+          if(res.data.code === 502 || res.data.code === 404){
+            this.nodeWin(false,'Network error, please try again','参数不全','Network error, please try again')
+            return
+          }
+          this.node.loadding = false
+          this.windows.topUp = true
+          this.topUpData.name = res.data.data[0].name
+          this.topUpData.num = res.data.data[0].number
+        }catch{
+          this.nodeWin(false,'Network error, please try again','网络异常','Network error, please try again')
+          return
+        }
+      },
+
+
+
+     async configTopUp(){
+        // this.node.loadding = true
+        const originData = this.topUpData
+        const name = originData.name || null
+        const num = originData.num || null
+        const inName = originData.inName
+        const inNumber = originData.inNumber
+        const fiveDid = originData.fiveDid || null
+        const amount = originData.amount
+        const type = originData.topUpType
+        const status = originData.status
+        if(!fiveDid && originData.status === 1){
+          console.log(11);
+          
+          this.nodeWin(false,'单号流水不可为空','单号流水不可为空','单号流水不可为空')
+          return
+        }
+        try{
+          const username = this.username
+          const token = this.token
+          const res = await axios.post('https://2dmaster.com/api/configTopUp',{
+            username:username,
+            name:name,
+            num:num,
+            inName:inName,
+            inNumber:inNumber,
+            fiveDid:fiveDid,
+            amount:amount,
+            type:type,
+            is_out:status
+          },{
+            headers: {
+              Authorization: `Bearer ${token}`  // 通常是这样写
+            },
+            timeout:5000
+          })
+          if(res.data.code === 502 || res.data.code === 403){
+            this.nodeWin(false,'Network error, please try again','参数不全','Network error, please try again')
+            return
+          }
+          if(res.data.code === 400){
+            this.nodeWin(false,'Network error, please try again','余额不足','Network error, please try again')
+            return
+          }
+          if(res.data.code === 200){
+            this.nodeWin(true,'成功','成功','成功')
+            this.closeAll()
+            return
+          }
+        }catch{
+          this.nodeWin(false,'Network error, please try again','网络异常','Network error, please try again')
+          return
+        }
+      },
+
+      async getTemp(){
+        this.node.loadding = true
+        try{
+          const username = this.username
+          const token = this.token
+          const res = await axios.post('https://2dmaster.com/api/getTempData',{
+            username:username,
+                    },{
+            headers: {
+              Authorization: `Bearer ${token}`  // 通常是这样写
+            },
+            timeout:5000
+          })
+          const data = res.data
+          if(data.code != 200){
+            this.nodeWin(false,'Network error, please try again','网络异常','Network error, please try again')
+            return
+          }
+          this.tempData.totalPoint = data.totalPoint
+          this.tempData.totalIn = data.totalIn
+          this.tempData.totalOut = data.totalOut
+          this.tempData.data = data.data
+          this.node.loadding = false
+        }catch{
+          this.nodeWin(false,'Network error, please try again','网络异常','Network error, please try again')
+          return
+        }
+      },
+
       BetcheckLogin(){
         const token = JSON.parse(localStorage.getItem('loginData')) || null
         if(!token || !token.token){
@@ -238,20 +241,59 @@ const app = new Vue({
           }, 2000);
             return
         }
+        this.username = token.username
+        this.token = token.token
+      },
+      
+      async getData(){
+        try{
+          const username = this.username
+          const token = this.token
+          const res = await axios.post('https://2dmaster.com/api/getUserInfo',{
+            username:username  
+          },{
+            headers: {
+              Authorization: `Bearer ${token}`  // 通常是这样写
+            },
+            timeout:5000
+          })
+          if(res.data.code === 502){
+            this.nodeWin(false,'Network error, please try again','参数不全','Network error, please try again')
+            return
+          }
+          const data = res.data.data[0]
+          this.userInfo.userid = data.id
+          this.userInfo.username = data.username
+          this.userInfo.userBalance = data.balance
+          this.userInfo.userinvBalance = data.inviter_balance
+        }catch{
+          this.nodeWin(false,'Network error, please try again','网络异常','Network error, please try again')
+          return
+        }
       },
       nodeWin(success,ent,zht,mmt){     
         if(success){
           this.language.zh.node.success.textp = zht
-          this.language.en.node.success.textp = ent
-          this.language.my.node.success.textp = mmt
-          this.node.loadding = false
+          // this.language.en.node.success.textp = ent
+          // this.language.my.node.success.textp = mmt
+          this.closeStatus()
           this.node.success = true
         }else{
           this.language.zh.node.files.textp = zht
-          this.language.en.node.files.textp = ent
-          this.language.my.node.files.textp = mmt
-          this.node.loadding = false
+          // this.language.en.node.files.textp = ent
+          // this.language.my.node.files.textp = mmt
+          this.closeStatus()
           this.node.files = true
+        }
+        console.log(this.node.loadding);
+      },
+      closeStatus(){
+        this.node = {
+          nodeShow:false,
+          loadding:false,
+          nodeBet:false,
+          success:false,
+          files:false
         }
       }
     }

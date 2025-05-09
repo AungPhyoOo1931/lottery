@@ -21,21 +21,247 @@
         <header>
             <div class="log">{{text.title}}</div>
         </header>
-        <nav>
-            <div class="top-nav">
+        <div class="header-placeholder"></div>
+        <div v-if="windows.main === true" class="main">
+            <div class="main-page">
+                <div class="top">
+                    <div class="left">
+                        <div class="userId">用户id:<span>{{userInfo.userid}}</span></div>
+                        <div class="username">用户名:{{userInfo.username}}</div>
+                    </div>
+                    <div class="right">
+                        <div class="userbalance">余额:<span>{{userInfo.userBalance}}</span>Ks</div>
+                        <div class="point">积分:<span>{{userInfo.userinvBalance}}</span>point</div>
+                    </div>
+                </div>
                 <ul>
-                   
-                </ul>
-                <!-- <select v-model="lang" @change="setLang()">
-                    <option value="zh">中文</option>
-                    <option value="en">English</option>
-                    <option value="my">မြန်မာ</option>
-                </select> -->
-            </div>
-        </nav>
-        <div class="main">
-            
+                    <li @pointerup="closeAll();windows.bank = true;topUpData.status = 1">
+                        <div >充值</div>
+                        <div class="glyphicon glyphicon-menu-right"></div>
+                    </li>
+                    <li @pointerup="closeAll();windows.withdrawa = true;topUpData.status = 2">
+                        <div>提现</div>
+                        <div class="glyphicon glyphicon-menu-right"></div>
 
+                    </li>
+                    <li @pointerup="closeAll();windows.temp = true;windows.main = false,getTemp()">
+                        <div>团队</div>
+                        <div class="glyphicon glyphicon-menu-right"></div>
+
+                    </li>
+                    <li>
+                        <div>流水</div>
+                        <div class="glyphicon glyphicon-menu-right"></div>
+
+                    </li>
+                    <li>
+                        <div>客服</div>
+                        <div class="glyphicon glyphicon-menu-right"></div>
+                    </li>
+                    <li>
+                        <div>设置取款密码</div>
+                        <div class="glyphicon glyphicon-menu-right"></div>
+                    </li>
+                    <li>
+                        <div>退出</div>
+                        <div class="glyphicon glyphicon-menu-right"></div>
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div v-if="windows.record === true" class="record">
+            <div class="record-data">
+                <ul>
+                    <li>
+                        <div class="date">2025-5-3</div>
+                        <div class="list">
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="date">2025-5-3</div>
+                        <div class="list">
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div v-if="windows.inverRecord === true" class="inverRecord">
+            <div class="record-data">
+                <ul>
+                    <li>
+                        <div class="date">2025-5-3</div>
+                        <div class="list">
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="date">2025-5-3</div>
+                        <div class="list">
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                            <div class="list-data">
+                                <div class="time">20:50</div>
+                                <div class="type">下注</div>
+                                <div class="game">泰国2D-单选</div>
+                                <div class="amount">2000ks</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div v-if="windows.cosutomer === true" class="cosutomer">
+            <div class="text">客服</div>
+            <p>电话号码:09xxxxxxxxx</p>
+            <p>Telegram:@xxxxxx</p>
+            <p>Viber:09xxxxxxx</p><br>
+            <button>确定</button>
+        </div>
+
+        <div v-if="windows.changePassword === true" class="changePassword">
+            <div class="text">设置取款密码</div>
+            <p class="text-primary pas">如果没有设置过取款密码,可以在旧密码输入框里留空</p>
+            <p>旧密码:</p>
+            <input type="password">
+            <p>新密码:</p>
+            <input type="password">
+            <p>确认密码:</p>
+            <input type="password"><br><br>
+            <button>确认</button>
+            <button>取消</button>
+        </div>
+
+        <div v-if="windows.temp === true" class="temp">
+            <div class="top">
+              Total point:<span>{{ tempData.totalPoint }}</span>Pt
+            </div>
+            <div class="temp-set">
+              <div class="in-out">Total in: {{ tempData.totalIn }}Pt</div>
+              <div class="in-out">Total out: {{ tempData.totalOut }}Pt</div>
+            </div>
+            <div class="temp-data">
+              <ul>
+                <li v-for="(group, groupIndex) in tempData.data" :key="groupIndex">
+                  <div class="date">{{ group.date }}</div>
+                  <div class="list">
+                    <div class="list-data" v-for="(item, itemIndex) in group.list" :key="itemIndex">
+                        <div class="name">{{ item.username }}</div>
+                        <div class="game">{{item.type===1?text.betHistory.name.a : item.type===2?text.betHistory.name.b : item.type===3?text.betHistory.name.c : text.betHistory.name.d}}</div>
+                      <div class="time">{{ item.time }}</div>
+                      <div class="type">{{ item.status === 0 ? '下注' : '提现' }}</div>
+                      <div class="amount">{{ item.inver }}ks</div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+
+
+        <div v-if="windows.withdrawa === true" class="withdrawa">
+            <div class="text">提现</div>
+            <div class="amount">提现金额:<input v-model="topUpData.amount" type="number">ks</div>
+            <div class="accountName">收款账户名:<input v-model="topUpData.inName" type="text"></div>
+            <div class="account">收款账号:<input v-model="topUpData.inNumber" type="number"></div>
+            <select v-model="topUpData.topUpType">
+                <option value="1">Kpay</option>
+                <option value="2"></span>Wave Pay</option>
+            </select><br>
+            <div class="btn">
+                <button @pointerup="configTopUp();node.loadding = true">确认</button>
+                <button  @pointerup="closeAll()">取消</button>
+            </div>
+        </div>
+        <div v-if="windows.topUp === true" class="topUp">
+            <div class="text">充值</div>
+            <div class="payment">充值方式:{{topUpData.topUpType === 1? "Kpay" : "Wave Pay"}}</div>
+            <div class="amount">充值金额:<input v-model="topUpData.amount" type="number">ks</div>
+            <div class="inname">收款账户名:{{topUpData.name}}<span>复制</span></div>
+            <div class="inacc">收款账户号码:{{topUpData.num}}<span>复制</span></div>
+            <div class="outname">付款账户名:<input v-model="topUpData.inName" type="text"></div>
+            <div class="outacc">付款账户号码:<input v-model="topUpData.inNumber" type="number"></div>
+            <div class="outtels">流水单后五位:<input v-model="topUpData.fiveDid" type="number"></div>
+            <div class="btn">
+                <button @pointerup="configTopUp();node.loadding = true">确认</button>
+                <button @pointerup="closeAll()">取消</button>
+            </div>
+            <p class="text-primary">请完整填写信息,如果转账后10分钟内未到账,请联系客服处理!!!</p>
+
+        </div>
+        <div v-if="windows.bank === true" class="bank">
+            <div class="text">充值方式</div>
+            <button @pointerup="closeAll();topUpData.topUpType = 1;topUp()">KPAY</button>
+            <button @pointerup="closeAll();topUpData.topUpType = 2;topUp()">WAVE PAY</button><br><br>
+            <button @pointerup="closeAll()">取消</button>
         </div>
         <div class="note" :style="{display:node.nodeShow ? 'block' : 'none'}">
             {{text.NodeText}}
@@ -43,11 +269,11 @@
         <div v-if="node.loadding" class="loadding">
             <span class="glyphicon glyphicon-refresh"></span>
         </div>
-        <div v-if="node.success"  @pointerup="node.success = false" class="success">
+        <div v-if="node.success"  @pointerup="closeStatus()" class="success">
             <span class="glyphicon glyphicon-ok-circle"></span>
             <p>{{text.node.success.textp}}</p>
         </div>
-        <div v-if="node.files" @pointerup="node.files = false" class="files">
+        <div v-if="node.files" @pointerup="closeStatus()" class="files">
             <span class="glyphicon glyphicon-remove-circle"></span>
             <p>{{text.node.files.textp}}</p>
         </div>
@@ -55,9 +281,9 @@
             <div class="footer-nav">
                 <ul>
                     <li><a href="index.html">{{text.game}}</a></li>
-                    <li class="active"><a href="history.html">{{text.history}}</a></li>
+                    <li ><a href="history.html">{{text.history}}</a></li>
                     <li><a href="#">{{text.post}}</a></li>
-                    <li><a href="info.html">{{text.info}}</a></li>
+                    <li class="active"><a href="info.html">{{text.info}}</a></li>
                 </ul>
             </div>
         </footer>
